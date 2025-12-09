@@ -31,4 +31,4 @@ coverage
 *.zip
 .trae
 .vscode
-.vecel
+.vercel
