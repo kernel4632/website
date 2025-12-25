@@ -6,7 +6,7 @@
       <span>✨创造</span>
     </div>
     <div class="about-content">
-      <p>👋 我是主核 kernyr</p>
+      <p>👋 我是主核Kernyr</p>
       <p>一名技术探索者、游戏开发追梦人🌟</p>
       <p>正在广州美术学院度过最美好的大学四年🎓</p>
       <p>痴迷技术探索🔍</p>
