@@ -1,5 +1,5 @@
 # robots.txt for 主核Kernyr 个人主页
-# https://kernyr.com
+# https://hujiarong.site
 
 # 允许所有搜索引擎爬虫访问
 User-agent: *
@@ -10,7 +10,7 @@ Allow: /
 # Disallow: /admin/
 
 # 站点地图位置
-Sitemap: https://kernyr.com/sitemap.xml
+Sitemap: https://hujiarong.site/sitemap.xml
 
 # 爬取延迟（可选，防止服务器压力过大）
 Crawl-delay: 1

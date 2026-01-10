@@ -5,15 +5,15 @@
 
     <!-- 主页 -->
     <url>
-        <loc>https://kernyr.com/</loc>
+        <loc>https://hujiarong.site/</loc>
         <lastmod>2025-01-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- 关于我页面（单页应用的锚点） -->
+    <!-- 关于我页面 -->
     <url>
-        <loc>https://kernyr.com/#about</loc>
+        <loc>https://hujiarong.site/#about</loc>
         <lastmod>2025-01-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -21,7 +21,7 @@
 
     <!-- 友情链接页面 -->
     <url>
-        <loc>https://kernyr.com/#friends</loc>
+        <loc>https://hujiarong.site/#friends</loc>
         <lastmod>2025-01-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -29,7 +29,7 @@
 
     <!-- 联系方式页面 -->
     <url>
-        <loc>https://kernyr.com/#contact</loc>
+        <loc>https://hujiarong.site/#contact</loc>
         <lastmod>2025-01-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -37,7 +37,7 @@
 
     <!-- 项目展示页面 -->
     <url>
-        <loc>https://kernyr.com/#projects</loc>
+        <loc>https://hujiarong.site/#projects</loc>
         <lastmod>2025-01-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

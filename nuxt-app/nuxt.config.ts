@@ -92,11 +92,11 @@ export default defineNuxtConfig({
           property: 'og:description', 
           content: '技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。' 
         },
-        { property: 'og:image', content: 'https://kernyr.com/assets/avatar.jpg' },
+        { property: 'og:image', content: 'https://hujiarong.site/assets/avatar.jpg' },
         { property: 'og:image:width', content: '512' },
         { property: 'og:image:height', content: '512' },
         { property: 'og:image:alt', content: '主核Kernyr的头像' },
-        { property: 'og:url', content: 'https://kernyr.com' },
+        { property: 'og:url', content: 'https://hujiarong.site' },
         { property: 'og:locale', content: 'zh_CN' },
         
         // Twitter Card - Twitter 分享优化
@@ -106,7 +106,7 @@ export default defineNuxtConfig({
           name: 'twitter:description', 
           content: '技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。' 
         },
-        { name: 'twitter:image', content: 'https://kernyr.com/assets/avatar.jpg' },
+        { name: 'twitter:image', content: 'https://hujiarong.site/assets/avatar.jpg' },
         { name: 'twitter:image:alt', content: '主核Kernyr的头像' },
         
         // 其他 SEO 相关
@@ -131,7 +131,7 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         
         // Canonical URL - 防止重复内容
-        { rel: 'canonical', href: 'https://kernyr.com' },
+        { rel: 'canonical', href: 'https://hujiarong.site' },
         
         // DNS 预解析 - 提升性能
         { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
@@ -142,7 +142,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         
         // 作者信息
-        { rel: 'author', href: 'https://kernyr.com' },
+        { rel: 'author', href: 'https://hujiarong.site' },
         
         // 站点地图
         { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' },
@@ -158,26 +158,26 @@ export default defineNuxtConfig({
               // WebSite 结构化数据
               {
                 '@type': 'WebSite',
-                '@id': 'https://kernyr.com/#website',
-                'url': 'https://kernyr.com',
+                '@id': 'https://hujiarong.site/#website',
+                'url': 'https://hujiarong.site',
                 'name': '主核Kernyr',
                 'description': '主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人',
                 'inLanguage': 'zh-CN',
                 'publisher': {
-                  '@id': 'https://kernyr.com/#person'
+                  '@id': 'https://hujiarong.site/#person'
                 },
               },
               // Person 结构化数据
               {
                 '@type': 'Person',
-                '@id': 'https://kernyr.com/#person',
+                '@id': 'https://hujiarong.site/#person',
                 'name': '主核Kernyr',
                 'alternateName': 'Kernyr',
                 'description': '技术探索者、游戏开发追梦人',
-                'url': 'https://kernyr.com',
+                'url': 'https://hujiarong.site',
                 'image': {
                   '@type': 'ImageObject',
-                  'url': 'https://kernyr.com/assets/avatar.jpg',
+                  'url': 'https://hujiarong.site/assets/avatar.jpg',
                   'width': 512,
                   'height': 512,
                 },
@@ -203,28 +203,28 @@ export default defineNuxtConfig({
               // WebPage 结构化数据
               {
                 '@type': 'WebPage',
-                '@id': 'https://kernyr.com/#webpage',
-                'url': 'https://kernyr.com',
+                '@id': 'https://hujiarong.site/#webpage',
+                'url': 'https://hujiarong.site',
                 'name': '主核Kernyr - 个人主页',
                 'description': '主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。',
                 'isPartOf': {
-                  '@id': 'https://kernyr.com/#website'
+                  '@id': 'https://hujiarong.site/#website'
                 },
                 'about': {
-                  '@id': 'https://kernyr.com/#person'
+                  '@id': 'https://hujiarong.site/#person'
                 },
                 'inLanguage': 'zh-CN',
               },
               // BreadcrumbList 结构化数据
               {
                 '@type': 'BreadcrumbList',
-                '@id': 'https://kernyr.com/#breadcrumb',
+                '@id': 'https://hujiarong.site/#breadcrumb',
                 'itemListElement': [
                   {
                     '@type': 'ListItem',
                     'position': 1,
                     'name': '首页',
-                    'item': 'https://kernyr.com',
+                    'item': 'https://hujiarong.site',
                   },
                 ],
               },
@@ -253,7 +253,7 @@ export default defineNuxtConfig({
       // 站点基础信息
       siteName: '主核Kernyr',
       siteDescription: '永远相信自己可以不自量力地改变世界',
-      siteUrl: 'https://kernyr.com',
+      siteUrl: 'https://hujiarong.site',
     },
   },
 

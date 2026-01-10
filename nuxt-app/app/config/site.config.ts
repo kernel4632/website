@@ -39,7 +39,7 @@ export const SITE_AUTHOR = '主核Kernyr'
 /**
  * 站点 URL（用于生成 canonical URL 和 sitemap）
  */
-export const SITE_URL = 'https://kernyr.com'
+export const SITE_URL = 'https://hujiarong.site'
 
 /**
  * 站点语言

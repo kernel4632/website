@@ -6,6 +6,7 @@
   - 渲染所有页面组件
   - 管理页面切换和过渡动画
   - 提供语义化 HTML 结构以优化 SEO
+  - 支持 URL hash 路由（如 #about, #friends）
   
   架构说明：
   本应用采用单页面多区块的设计模式，
@@ -16,6 +17,7 @@
   - 使用语义化 HTML5 标签（main, section, article, nav, header, footer）
   - 添加 ARIA 标签提升无障碍访问性
   - 结构化数据通过 nuxt.config.ts 注入
+  - 支持 URL hash 路由，便于分享和 SEO
 -->
 
 <template>
@@ -51,14 +53,34 @@
  * 根据 usePageNavigation composable 中的当前页面状态
  * 自动控制显示/隐藏和过渡动画。
  * 
+ * Hash 路由说明：
+ * - 支持 URL hash 路由（如 #about, #friends, #contact, #projects）
+ * - 页面切换时自动更新 URL hash
+ * - 打开带 hash 的 URL 时自动跳转到对应页面
+ * - 支持浏览器前进/后退按钮
+ * 
  * SEO 说明：
  * - 全局 SEO 配置在 nuxt.config.ts 中定义
  * - 结构化数据（JSON-LD）在 nuxt.config.ts 中注入
  * - 各页面组件使用语义化标签
- * 
- * 注意：SEO meta 标签已在 nuxt.config.ts 中配置，
- * 这里不再重复使用 useSeoMeta 以避免 hydration mismatch
  */
+
+// ==================== Hash 路由初始化 ====================
+
+const { initFromHash, setupHashChangeListener } = usePageNavigation()
+
+/**
+ * 在客户端挂载时初始化 hash 路由
+ * 1. 从 URL hash 初始化当前页面
+ * 2. 设置 hashchange 事件监听器
+ */
+onMounted(() => {
+  // 从 URL hash 初始化页面（如果有）
+  initFromHash()
+
+  // 监听浏览器前进/后退事件
+  setupHashChangeListener()
+})
 </script>
 
 <style>
