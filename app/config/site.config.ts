@@ -59,7 +59,7 @@ export const OG_IMAGE = '/assets/avatar.jpg'
 /**
  * Twitter 用户名（如果有）
  */
-export const TWITTER_HANDLE = ''
+export const TWITTER_HANDLE = '@kernel4632'
 
 /**
  * 站点类型
