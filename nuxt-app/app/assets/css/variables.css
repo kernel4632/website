@@ -1,0 +1,111 @@
+/**
+ * CSS 变量定义文件
+ * 
+ * 定义全局主题变量，包括：
+ * - 主题色彩
+ * - 阴影效果
+ * - 圆角尺寸
+ * - 过渡动画
+ * 
+ * 使用方式：var(--变量名)
+ */
+
+:root {
+    /* ==================== 主题色彩 ==================== */
+
+    /* 主题色 - 天蓝色 */
+    --theme-color: rgb(103, 171, 255);
+
+    /* 主题色 RGB 值（用于 rgba 函数） */
+    --theme-color-rgb: 103, 171, 255;
+
+    /* 背景色 */
+    --background-color: #ffffff;
+
+    /* 文字颜色 */
+    --text-color: #000000;
+
+    /* 文字颜色（浅色） */
+    --text-color-light: rgba(103, 171, 255, 0.6);
+
+    /* 白色 */
+    --white: #ffffff;
+
+    /* ==================== 阴影效果 ==================== */
+
+    /* 主阴影 - 用于按钮、卡片等 */
+    --shadow-primary: 0 2px 20px rgba(103, 171, 255, 0.3);
+
+    /* 悬停阴影 - 用于卡片悬停效果 */
+    --shadow-hover: 0 0 5px var(--theme-color);
+
+    /* 头像阴影 */
+    --shadow-avatar: 0 0 2em rgba(65, 151, 255, 0.2);
+
+    /* 头像悬停阴影 */
+    --shadow-avatar-hover: 0 0 2em rgba(65, 151, 255, 0.533);
+
+    /* ==================== 圆角尺寸 ==================== */
+
+    /* 按钮圆角 */
+    --border-radius-button: 15px;
+
+    /* 卡片圆角 */
+    --border-radius-card: 15px;
+
+    /* 标签圆角 */
+    --border-radius-tag: 10px;
+
+    /* 圆形（头像等） */
+    --border-radius-circle: 50%;
+
+    /* ==================== 过渡动画 ==================== */
+
+    /* 默认过渡时间 */
+    --transition-duration: 0.5s;
+
+    /* 默认缓动函数 - 弹性效果 */
+    --transition-timing: cubic-bezier(0.2, 0.84, 0, 1);
+
+    /* 完整过渡属性 */
+    --transition-default: var(--transition-duration) var(--transition-timing);
+
+    /* 快速过渡（用于滤镜等） */
+    --transition-fast: 300ms ease;
+
+    /* ==================== 尺寸定义 ==================== */
+
+    /* 按钮宽度 */
+    --button-width: 210px;
+
+    /* 按钮高度 */
+    --button-height: 50px;
+
+    /* 头像尺寸 */
+    --avatar-size: 200px;
+
+    /* 卡片最大宽度 */
+    --card-max-width: 300px;
+
+    /* 卡片图标尺寸 */
+    --card-icon-size: 100px;
+
+    /* 联系方式图标尺寸 */
+    --contact-icon-size: 40px;
+
+    /* ==================== 字体设置 ==================== */
+
+    /* 默认字体族 */
+    --font-family: sans-serif;
+
+    /* 字间距 */
+    --letter-spacing: 1px;
+
+    /* ==================== 网格背景 ==================== */
+
+    /* 网格线颜色 */
+    --grid-line-color: rgba(103, 171, 255, 0.07);
+
+    /* 网格尺寸 */
+    --grid-size: 30px;
+}

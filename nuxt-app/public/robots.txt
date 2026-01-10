@@ -1,0 +1,51 @@
+# robots.txt for 主核Kernyr 个人主页
+# https://kernyr.com
+
+# 允许所有搜索引擎爬虫访问
+User-agent: *
+Allow: /
+
+# 禁止爬取的路径（如有需要可添加）
+# Disallow: /private/
+# Disallow: /admin/
+
+# 站点地图位置
+Sitemap: https://kernyr.com/sitemap.xml
+
+# 爬取延迟（可选，防止服务器压力过大）
+Crawl-delay: 1
+
+# Google 特定规则
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing 特定规则
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Baidu 特定规则（百度爬虫）
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# 360 搜索爬虫
+User-agent: 360Spider
+Allow: /
+Crawl-delay: 1
+
+# 搜狗爬虫
+User-agent: Sogou web spider
+Allow: /
+Crawl-delay: 1
+
+# 神马搜索爬虫
+User-agent: YisouSpider
+Allow: /
+Crawl-delay: 1
+
+# 头条搜索爬虫
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 1

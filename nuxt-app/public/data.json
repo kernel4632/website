@@ -1,0 +1,74 @@
+{
+  "朋友数据": [
+    {
+      "名字": "Zmh",
+      "简介": "我永远铭记的编程导师",
+      "头像": "https://zmh.me/avatar.webp",
+      "链接": "https://zmh.me"
+    },
+    {
+      "名字": "阳毅",
+      "简介": "挺有执行力的朋友",
+      "头像": "https://p.qlogo.cn/gh/748440630/748440630/",
+      "链接": "https://yangyiit.top"
+    },
+    {
+      "名字": "陨落基围虾",
+      "简介": "比较猎奇，难以评价",
+      "头像": "https://fshrimp.hujiarong.site/avatars/lycaon.jpg",
+      "链接": "https://fshrimp.hujiarong.site/"
+    },
+    {
+      "名字": "skydog221",
+      "简介": "非常棒的编程伙伴",
+      "头像": "https://m.ccw.site/user_projects_assets/71fda09e6b59355519a8f1d40b40df18.png",
+      "链接": "https://mbod.me/"
+    }
+  ],
+  "项目数据": [
+    {
+      "项目名": "炼丹蓝图",
+      "简介": "蓝图式AI架构搭建工具",
+      "图标": "炼丹蓝图.svg",
+      "网址": "https://aib.hujiarong.site/"
+    },
+    {
+      "项目名": "DEQ-RWKV",
+      "简介": "把DEQ（深度均衡模型）算法和RWKV-v7架构结合起来的玩具",
+      "图标": "RWKV.png",
+      "网址": "https://github.com/kernel4632/DEQ-RWKV"
+    },
+    {
+      "项目名": "超级鹦鹉",
+      "简介": "初级伪人工智能",
+      "图标": "超级鹦鹉.svg",
+      "网址": "#"
+    }
+  ],
+  "联系方式": [
+    {
+      "类型": "QQ",
+      "图标": "QQ.svg",
+      "文本": "917811726",
+      "链接": "https://qm.qq.com/q/7PEdzand7O"
+    },
+    {
+      "类型": "微信",
+      "图标": "微信.svg",
+      "文本": "17137214543",
+      "链接": "#"
+    },
+    {
+      "类型": "哔哩哔哩",
+      "图标": "哔哩哔哩.svg",
+      "文本": "主核Kernyr",
+      "链接": "https://space.bilibili.com/545450739"
+    },
+    {
+      "类型": "GitHub",
+      "图标": "GitHub.svg",
+      "文本": "kernel4632",
+      "链接": "http://github.com/kernel4632"
+    }
+  ]
+}

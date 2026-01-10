@@ -1,0 +1,177 @@
+/**
+ * 全局样式文件
+ * 
+ * 包含：
+ * - CSS 重置
+ * - 基础元素样式
+ * - 通用工具类
+ * - 页面过渡动画
+ */
+
+/* ==================== CSS 重置 ==================== */
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    /* 禁止文本选择（可选择区域除外） */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* 禁止文本换行 */
+    white-space: nowrap;
+}
+
+#__nuxt {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== 通用元素样式 ==================== */
+
+* {
+    /* 默认过渡动画 */
+    transition: var(--transition-default);
+
+    /* 字体加粗 */
+    font-weight: bold;
+
+    /* 字间距 */
+    letter-spacing: var(--letter-spacing);
+
+    /* 防止字体大小自动调整 */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    /* 盒模型 */
+    box-sizing: border-box;
+}
+
+/* 移除点击高亮 */
+*:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 文本选中样式 */
+*::selection {
+    background: var(--theme-color);
+    color: var(--white);
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+*::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* ==================== 标题样式 ==================== */
+
+h1 {
+    font-size: 40px;
+    margin: 0;
+    font-weight: bold;
+    color: var(--theme-color);
+}
+
+h2 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--theme-color);
+}
+
+/* ==================== 按钮基础样式 ==================== */
+
+button {
+    color: var(--white);
+    border: none;
+    box-shadow: var(--shadow-primary);
+    border-radius: var(--border-radius-button);
+    cursor: pointer;
+    font-size: 17px;
+    height: var(--button-height);
+    margin: 15px 0;
+    width: var(--button-width);
+    background-color: var(--theme-color);
+    filter: brightness(1);
+    outline: none;
+    transition: var(--transition-default);
+}
+
+button:hover {
+    filter: brightness(1.1);
+    scale: 1.05;
+}
+
+button:active {
+    scale: 0.95;
+    filter: brightness(1);
+}
+
+/* ==================== 页面过渡动画 ==================== */
+
+/* 页面进入动画 */
+.page-enter-active,
+.page-leave-active {
+    transition: all 0.5s var(--transition-timing);
+}
+
+.page-enter-from {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.page-leave-to {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* ==================== 显示/隐藏工具类 ==================== */
+
+.hidden {
+    visibility: hidden;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.visible {
+    visibility: visible;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ==================== 链接样式 ==================== */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: var(--theme-color);
+}
