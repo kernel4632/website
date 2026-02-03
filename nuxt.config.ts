@@ -85,9 +85,9 @@ export default defineNuxtConfig({
         { name: "bingbot", content: "index, follow" },
 
         // 主题色配置
-        { name: "theme-color", content: "#1a1a2e" },
-        { name: "msapplication-TileColor", content: "#1a1a2e" },
-        { name: "msapplication-navbutton-color", content: "#1a1a2e" },
+        { name: "theme-color", content: "#ffffff" },
+        { name: "msapplication-TileColor", content: "#ffffff" },
+        { name: "msapplication-navbutton-color", content: "#ffffff" },
         {
           name: "apple-mobile-web-app-status-bar-style",
           content: "black-translucent",
@@ -141,12 +141,8 @@ export default defineNuxtConfig({
         // 版权信息
         {
           name: "copyright",
-          content: "© 2022-2025 主核Kernyr. All rights reserved.",
+          content: "© 2022-2026 主核Kernyr. All rights reserved.",
         },
-
-        // 地理位置信息（可选，有助于本地 SEO）
-        { name: "geo.region", content: "CN-GD" },
-        { name: "geo.placename", content: "广州" },
       ],
 
       // Link 标签
@@ -324,7 +320,7 @@ export default defineNuxtConfig({
   // 图片模块配置
   image: {
     // 图片质量设置
-    quality: 80,
+    quality: 100,
     // 支持的格式
     format: ["webp", "png", "jpg"],
   },

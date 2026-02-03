@@ -7,7 +7,7 @@
     <url>
         <loc>https://hujiarong.site/</loc>
         <lastmod>2025-01-10</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>yearly</changefreq>
         <priority>1.0</priority>
     </url>
 
@@ -15,7 +15,7 @@
     <url>
         <loc>https://hujiarong.site/#about</loc>
         <lastmod>2025-01-10</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
 
@@ -23,7 +23,7 @@
     <url>
         <loc>https://hujiarong.site/#friends</loc>
         <lastmod>2025-01-10</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
 
@@ -31,7 +31,7 @@
     <url>
         <loc>https://hujiarong.site/#contact</loc>
         <lastmod>2025-01-10</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
 
@@ -39,7 +39,7 @@
     <url>
         <loc>https://hujiarong.site/#projects</loc>
         <lastmod>2025-01-10</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
 
