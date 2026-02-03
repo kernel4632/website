@@ -25,7 +25,7 @@
 // 页面区块布局组件 - 提供统一的页面布局和过渡效果
 // 用法：<PageSection pageId="home" title="标题"><template #default>内容</template></PageSection>
 
-import type { PageName } from '~/types'
+import type { PageName } from '~/index'
 
 interface Props {
     pageId: PageName // 页面标识符

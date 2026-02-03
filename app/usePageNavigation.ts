@@ -1,8 +1,8 @@
 // 页面导航管理 - 管理当前页面状态和页面切换
 // 用法：const { currentPage, switchPage } = usePageNavigation()
 
-import type { PageName } from '~/types'
-import { defaultPage } from '~/config/site.config'
+import type { PageName } from '~/index'
+import { defaultPage } from '~/site.config'
 
 // 页面名称到URL hash的映射
 const pageToHash: Record<PageName, string> = {

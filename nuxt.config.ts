@@ -35,6 +35,14 @@ export default defineNuxtConfig({
     },
   ],
 
+  // 自动导入配置 - 导入app根目录下的composables
+  imports: {
+    dirs: [
+      'composables', // 默认的composables目录
+      '*.ts', // app根目录下的所有ts文件
+    ]
+  },
+
   // 应用配置
   app: {
     // 页面 head 配置 - 全面的 SEO 优化

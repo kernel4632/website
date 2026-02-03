@@ -29,7 +29,7 @@
 // 主页组件 - 展示头像、名称、座右铭和导航按钮
 // 用法：<HomePage />
 
-import { siteName, siteMotto, avatarPath } from '~/config/site.config'
+import { siteName, siteMotto, avatarPath } from '~/site.config'
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
 </script>

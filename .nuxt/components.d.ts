@@ -14,15 +14,15 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 
-export const PageSection: typeof import("../app/components/layout/PageSection.vue").default
-export const AboutPage: typeof import("../app/components/pages/AboutPage.vue").default
-export const ContactPage: typeof import("../app/components/pages/ContactPage.vue").default
-export const FriendsPage: typeof import("../app/components/pages/FriendsPage.vue").default
-export const HomePage: typeof import("../app/components/pages/HomePage.vue").default
-export const ProjectsPage: typeof import("../app/components/pages/ProjectsPage.vue").default
-export const BaseButton: typeof import("../app/components/ui/BaseButton.vue").default
-export const BaseCard: typeof import("../app/components/ui/BaseCard.vue").default
-export const FilingInfo: typeof import("../app/components/ui/FilingInfo.vue").default
+export const AboutPage: typeof import("../app/components/AboutPage.vue").default
+export const BaseButton: typeof import("../app/components/BaseButton.vue").default
+export const BaseCard: typeof import("../app/components/BaseCard.vue").default
+export const ContactPage: typeof import("../app/components/ContactPage.vue").default
+export const FilingInfo: typeof import("../app/components/FilingInfo.vue").default
+export const FriendsPage: typeof import("../app/components/FriendsPage.vue").default
+export const HomePage: typeof import("../app/components/HomePage.vue").default
+export const PageSection: typeof import("../app/components/PageSection.vue").default
+export const ProjectsPage: typeof import("../app/components/ProjectsPage.vue").default
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue").default
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout").default
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue").default
@@ -47,15 +47,15 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components").Html
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components").Body
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island").default
-export const LazyPageSection: LazyComponent<typeof import("../app/components/layout/PageSection.vue").default>
-export const LazyAboutPage: LazyComponent<typeof import("../app/components/pages/AboutPage.vue").default>
-export const LazyContactPage: LazyComponent<typeof import("../app/components/pages/ContactPage.vue").default>
-export const LazyFriendsPage: LazyComponent<typeof import("../app/components/pages/FriendsPage.vue").default>
-export const LazyHomePage: LazyComponent<typeof import("../app/components/pages/HomePage.vue").default>
-export const LazyProjectsPage: LazyComponent<typeof import("../app/components/pages/ProjectsPage.vue").default>
-export const LazyBaseButton: LazyComponent<typeof import("../app/components/ui/BaseButton.vue").default>
-export const LazyBaseCard: LazyComponent<typeof import("../app/components/ui/BaseCard.vue").default>
-export const LazyFilingInfo: LazyComponent<typeof import("../app/components/ui/FilingInfo.vue").default>
+export const LazyAboutPage: LazyComponent<typeof import("../app/components/AboutPage.vue").default>
+export const LazyBaseButton: LazyComponent<typeof import("../app/components/BaseButton.vue").default>
+export const LazyBaseCard: LazyComponent<typeof import("../app/components/BaseCard.vue").default>
+export const LazyContactPage: LazyComponent<typeof import("../app/components/ContactPage.vue").default>
+export const LazyFilingInfo: LazyComponent<typeof import("../app/components/FilingInfo.vue").default>
+export const LazyFriendsPage: LazyComponent<typeof import("../app/components/FriendsPage.vue").default>
+export const LazyHomePage: LazyComponent<typeof import("../app/components/HomePage.vue").default>
+export const LazyPageSection: LazyComponent<typeof import("../app/components/PageSection.vue").default>
+export const LazyProjectsPage: LazyComponent<typeof import("../app/components/ProjectsPage.vue").default>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue").default>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout").default>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue").default>

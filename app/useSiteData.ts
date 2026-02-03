@@ -1,8 +1,8 @@
 // 站点数据获取 - 从JSON文件加载站点数据
 // 用法：const { friendsData, projectsData, fetchData } = useSiteData()
 
-import type { FriendData, ProjectData, ContactData, SiteData } from '~/types'
-import { dataFilePath } from '~/config/site.config'
+import type { FriendData, ProjectData, ContactData, SiteData } from '~/index'
+import { dataFilePath } from '~/site.config'
 
 // 全局状态（使用useState确保SSR兼容）
 const useFriendsData = () => useState<FriendData[]>('friendsData', () => []) // 朋友数据

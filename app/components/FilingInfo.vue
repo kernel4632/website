@@ -15,7 +15,7 @@
 // 备案信息组件 - 显示ICP备案和公安备案信息
 // 用法：<FilingInfo />
 
-import { icpNumber, icpLink, policeNumber, policeLink, policeIconPath } from '~/config/site.config'
+import { icpNumber, icpLink, policeNumber, policeLink, policeIconPath } from '~/site.config'
 </script>
 
 <style scoped>

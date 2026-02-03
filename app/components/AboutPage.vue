@@ -31,7 +31,7 @@
 // 关于我页面 - 展示个人标签和介绍内容
 // 用法：<AboutPage />
 
-import { aboutTags, aboutContent } from '~/config/site.config'
+import { aboutTags, aboutContent } from '~/site.config'
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
 </script>

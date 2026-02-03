@@ -7,7 +7,7 @@ import {
   siteUrl,
   siteLocale,
   ogImage,
-} from '~/config/site.config'
+} from '~/site.config'
 
 // SEO配置接口
 interface SeoConfig {

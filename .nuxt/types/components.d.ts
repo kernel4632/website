@@ -14,15 +14,15 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 interface _GlobalComponents {
-  'PageSection': typeof import("../../app/components/layout/PageSection.vue").default
-  'AboutPage': typeof import("../../app/components/pages/AboutPage.vue").default
-  'ContactPage': typeof import("../../app/components/pages/ContactPage.vue").default
-  'FriendsPage': typeof import("../../app/components/pages/FriendsPage.vue").default
-  'HomePage': typeof import("../../app/components/pages/HomePage.vue").default
-  'ProjectsPage': typeof import("../../app/components/pages/ProjectsPage.vue").default
-  'BaseButton': typeof import("../../app/components/ui/BaseButton.vue").default
-  'BaseCard': typeof import("../../app/components/ui/BaseCard.vue").default
-  'FilingInfo': typeof import("../../app/components/ui/FilingInfo.vue").default
+  'AboutPage': typeof import("../../app/components/AboutPage.vue").default
+  'BaseButton': typeof import("../../app/components/BaseButton.vue").default
+  'BaseCard': typeof import("../../app/components/BaseCard.vue").default
+  'ContactPage': typeof import("../../app/components/ContactPage.vue").default
+  'FilingInfo': typeof import("../../app/components/FilingInfo.vue").default
+  'FriendsPage': typeof import("../../app/components/FriendsPage.vue").default
+  'HomePage': typeof import("../../app/components/HomePage.vue").default
+  'PageSection': typeof import("../../app/components/PageSection.vue").default
+  'ProjectsPage': typeof import("../../app/components/ProjectsPage.vue").default
   'NuxtWelcome': typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue").default
   'NuxtLayout': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout").default
   'NuxtErrorBoundary': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue").default
@@ -47,15 +47,15 @@ interface _GlobalComponents {
   'Html': typeof import("../../node_modules/nuxt/dist/head/runtime/components").Html
   'Body': typeof import("../../node_modules/nuxt/dist/head/runtime/components").Body
   'NuxtIsland': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-island").default
-  'LazyPageSection': LazyComponent<typeof import("../../app/components/layout/PageSection.vue").default>
-  'LazyAboutPage': LazyComponent<typeof import("../../app/components/pages/AboutPage.vue").default>
-  'LazyContactPage': LazyComponent<typeof import("../../app/components/pages/ContactPage.vue").default>
-  'LazyFriendsPage': LazyComponent<typeof import("../../app/components/pages/FriendsPage.vue").default>
-  'LazyHomePage': LazyComponent<typeof import("../../app/components/pages/HomePage.vue").default>
-  'LazyProjectsPage': LazyComponent<typeof import("../../app/components/pages/ProjectsPage.vue").default>
-  'LazyBaseButton': LazyComponent<typeof import("../../app/components/ui/BaseButton.vue").default>
-  'LazyBaseCard': LazyComponent<typeof import("../../app/components/ui/BaseCard.vue").default>
-  'LazyFilingInfo': LazyComponent<typeof import("../../app/components/ui/FilingInfo.vue").default>
+  'LazyAboutPage': LazyComponent<typeof import("../../app/components/AboutPage.vue").default>
+  'LazyBaseButton': LazyComponent<typeof import("../../app/components/BaseButton.vue").default>
+  'LazyBaseCard': LazyComponent<typeof import("../../app/components/BaseCard.vue").default>
+  'LazyContactPage': LazyComponent<typeof import("../../app/components/ContactPage.vue").default>
+  'LazyFilingInfo': LazyComponent<typeof import("../../app/components/FilingInfo.vue").default>
+  'LazyFriendsPage': LazyComponent<typeof import("../../app/components/FriendsPage.vue").default>
+  'LazyHomePage': LazyComponent<typeof import("../../app/components/HomePage.vue").default>
+  'LazyPageSection': LazyComponent<typeof import("../../app/components/PageSection.vue").default>
+  'LazyProjectsPage': LazyComponent<typeof import("../../app/components/ProjectsPage.vue").default>
   'LazyNuxtWelcome': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue").default>
   'LazyNuxtLayout': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout").default>
   'LazyNuxtErrorBoundary': LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue").default>
