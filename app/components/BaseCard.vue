@@ -90,6 +90,8 @@ function handleClick(): void { // 处理卡片点击
     /* 保留空白符 */
     transition: var(--transition-default);
     /* 过渡动画 */
+
+     container-type: inline-size;
 }
 
 /* 可点击卡片 */
@@ -160,7 +162,7 @@ function handleClick(): void { // 处理卡片点击
 
 /* 卡片标题 */
 .baseCard__title {
-    font-size: 40px;
+    font-size: clamp(0px, 16cqw, 100px);
     /* 字体大小 */
     margin: 0;
     /* 移除外边距 */

@@ -83,7 +83,7 @@ const { switchPage } = usePageNavigation() // 获取页面切换方法
     /* 阴影效果 */
     padding: 8px 15px;
     /* 内边距 */
-    margin: 10px 15px;
+    margin: 8px;
     /* 外边距 */
     border-radius: var(--border-radius-tag);
     /* 圆角 */

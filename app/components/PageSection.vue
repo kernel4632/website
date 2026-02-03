@@ -141,7 +141,7 @@ const sectionClass = computed(() => [ // 计算区块类名
 .pageSection__divider {
     margin-top: 15px;
     /* 顶部间距 */
-    width: 50px;
+    width: 48px;
     /* 宽度 */
     height: 5px;
     /* 高度 */
@@ -169,8 +169,6 @@ const sectionClass = computed(() => [ // 计算区块类名
     /* 垂直居中 */
     align-items: center;
     /* 水平居中 */
-    padding: 0 20px;
-    /* 左右内边距 */
 }
 
 /* 按钮区域 */
