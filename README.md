@@ -6,7 +6,6 @@
 
 - GitHub: [kernel4632](http://github.com/kernel4632)
 - 哔哩哔哩: [主核Kernyr](https://space.bilibili.com/545450739)
-- 微信: 17137214543
 - QQ: [917811726](https://qm.qq.com/q/7PEdzand7O)
 
 ## 怎么在本地运行这个网站
@@ -16,7 +15,7 @@
 先打开命令行工具，在项目文件夹里输入下面的命令，安装需要的依赖包：
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 第二步：启动开发服务器
@@ -24,7 +23,7 @@ npm install
 安装完依赖后，输入下面的命令，启动本地开发服务器：
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 然后打开浏览器，输入 `http://localhost:3000` 就能看到网站啦！
@@ -34,7 +33,7 @@ npm run dev
 如果想把网站放到网上，需要先构建生产版本，输入下面的命令：
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 构建完成后，会生成一个 `.output` 文件夹，里面就是可以直接上线的网站文件。
@@ -44,7 +43,7 @@ npm run build
 如果想在本地看看构建后的网站效果，输入下面的命令：
 
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 这个命令会用本地服务器打开构建后的项目，让你预览最终效果。

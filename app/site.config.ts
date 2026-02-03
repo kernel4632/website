@@ -1,7 +1,7 @@
 // 站点配置 - 集中管理所有可定制的站点信息
 // 用法：import { siteName, siteUrl } from '~/site.config'
 
-import type { PageConfig } from '~/index'
+import type { PageConfig } from '~'
 
 // 站点基本信息
 export const siteName = '主核Kernyr' // 站点名称

@@ -27,7 +27,7 @@
 // 联系方式页面 - 展示QQ、微信、哔哩哔哩、GitHub等联系方式
 // 用法：<ContactPage />
 
-import type { ContactData } from '~/index'
+import type { ContactData } from '~'
 import { openLinkOrCopy } from '~/clipboard'
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法

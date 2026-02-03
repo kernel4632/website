@@ -20,7 +20,7 @@
 // 基础卡片组件 - 展示图标、标题和简介，支持点击跳转
 // 用法：<BaseCard title="标题" description="描述" icon="图标路径" link="链接" type="friend" />
 
-import type { CardType } from '~/index'
+import type { CardType } from '~'
 
 interface Props {
     title: string // 卡片标题
@@ -91,7 +91,7 @@ function handleClick(): void { // 处理卡片点击
     transition: var(--transition-default);
     /* 过渡动画 */
 
-     container-type: inline-size;
+    container-type: inline-size;
 }
 
 /* 可点击卡片 */

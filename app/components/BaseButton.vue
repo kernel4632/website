@@ -8,7 +8,7 @@
 // 基础按钮组件 - 提供primary和secondary两种样式
 // 用法：<BaseButton variant="primary" @click="handleClick">按钮文本</BaseButton>
 
-import type { ButtonVariant } from '~/index'
+import type { ButtonVariant } from '~'
 
 interface Props {
     variant?: ButtonVariant // 按钮变体（primary主要 secondary次要）
