@@ -36,6 +36,7 @@ coverage
 .output
 .data
 .nuxt
+.nuxt/
 .nitro
 .cache
 dist

@@ -1,100 +1,66 @@
-/**
- * 站点数据获取 Composable
- * 
- * 功能：
- * - 从 JSON 文件获取站点数据
- * - 提供朋友数据、项目数据、联系方式数据
- * - 支持数据缓存和错误处理
- * 
- * 使用方式：
- * const { friendsData, projectsData, contactsData, fetchData } = useSiteData()
- */
+// 站点数据获取 - 从JSON文件加载站点数据
+// 用法：const { friendsData, projectsData, fetchData } = useSiteData()
 
 import type { FriendData, ProjectData, ContactData, SiteData } from '~/types'
-import { DATA_FILE_PATH } from '~/config/site.config'
+import { dataFilePath } from '~/config/site.config'
 
-// 使用 useState 创建全局状态（SSR 兼容）
-const useFriendsData = () => useState<FriendData[]>('friendsData', () => [])
-const useProjectsData = () => useState<ProjectData[]>('projectsData', () => [])
-const useContactsData = () => useState<ContactData[]>('contactsData', () => [])
-const useIsLoading = () => useState<boolean>('siteDataLoading', () => false)
-const useError = () => useState<Error | null>('siteDataError', () => null)
+// 全局状态（使用useState确保SSR兼容）
+const useFriendsData = () => useState<FriendData[]>('friendsData', () => []) // 朋友数据
+const useProjectsData = () => useState<ProjectData[]>('projectsData', () => []) // 项目数据
+const useContactsData = () => useState<ContactData[]>('contactsData', () => []) // 联系方式数据
+const useIsLoading = () => useState<boolean>('siteDataLoading', () => false) // 加载状态
+const useError = () => useState<Error | null>('siteDataError', () => null) // 错误状态
 
-/**
- * 站点数据 Composable
- * 
- * @returns 站点数据相关的状态和方法
- */
+// 站点数据composable
 export function useSiteData() {
-  // 获取状态
-  const friendsData = useFriendsData()
-  const projectsData = useProjectsData()
-  const contactsData = useContactsData()
-  const isLoading = useIsLoading()
-  const error = useError()
+  const friendsData = useFriendsData() // 获取朋友数据状态
+  const projectsData = useProjectsData() // 获取项目数据状态
+  const contactsData = useContactsData() // 获取联系方式数据状态
+  const isLoading = useIsLoading() // 获取加载状态
+  const error = useError() // 获取错误状态
 
-  /**
-   * 获取站点数据
-   * 从 public/data.json 文件加载数据
-   */
+  // 获取站点数据
+  // 用法：await fetchData()
   async function fetchData(): Promise<void> {
-    // 如果已有数据，不重复加载
-    if (friendsData.value.length > 0) {
-      return
-    }
+    if (friendsData.value.length > 0) return // 如果已有数据就不重复加载
 
-    isLoading.value = true
-    error.value = null
+    isLoading.value = true // 设置加载中
+    error.value = null // 清空错误
 
     try {
-      const response = await fetch(DATA_FILE_PATH)
-      
-      if (!response.ok) {
-        throw new Error(`HTTP 错误: ${response.status}`)
-      }
-      
-      const data: SiteData = await response.json()
-      
-      // 更新各数据状态
-      friendsData.value = data.朋友数据 || []
-      projectsData.value = data.项目数据 || []
-      contactsData.value = data.联系方式 || []
-      
+      const response = await fetch(dataFilePath) // 请求数据文件
+      if (!response.ok) throw new Error(`HTTP错误: ${response.status}`) // 检查响应状态
+
+      const data: SiteData = await response.json() // 解析JSON数据
+
+      friendsData.value = data.friends || [] // 更新朋友数据
+      projectsData.value = data.projects || [] // 更新项目数据
+      contactsData.value = data.contacts || [] // 更新联系方式数据
     } catch (err) {
-      error.value = err instanceof Error ? err : new Error('获取数据失败')
-      console.error('获取站点数据失败:', error.value)
+      error.value = err instanceof Error ? err : new Error('获取数据失败') // 设置错误信息
+      console.error('获取站点数据失败:', error.value) // 输出错误日志
     } finally {
-      isLoading.value = false
+      isLoading.value = false // 设置加载完成
     }
   }
 
-  /**
-   * 重新加载数据
-   * 强制重新获取数据，忽略缓存
-   */
+  // 重新加载数据
+  // 用法：await reloadData()
   async function reloadData(): Promise<void> {
-    // 清空现有数据
-    friendsData.value = []
-    projectsData.value = []
-    contactsData.value = []
-    
-    // 重新获取
-    await fetchData()
+    friendsData.value = [] // 清空朋友数据
+    projectsData.value = [] // 清空项目数据
+    contactsData.value = [] // 清空联系方式数据
+    await fetchData() // 重新获取数据
   }
 
   return {
-    // 数据状态（只读）
-    friendsData: readonly(friendsData),
-    projectsData: readonly(projectsData),
-    contactsData: readonly(contactsData),
-    
-    // 加载状态（只读）
-    isLoading: readonly(isLoading),
-    error: readonly(error),
-    
-    // 方法
-    fetchData,
-    reloadData,
+    friendsData: readonly(friendsData), // 朋友数据（只读）
+    projectsData: readonly(projectsData), // 项目数据（只读）
+    contactsData: readonly(contactsData), // 联系方式数据（只读）
+    isLoading: readonly(isLoading), // 加载状态（只读）
+    error: readonly(error), // 错误状态（只读）
+    fetchData, // 获取数据方法
+    reloadData, // 重新加载数据方法
   }
 }
 

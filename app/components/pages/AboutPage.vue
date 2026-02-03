@@ -1,144 +1,133 @@
-<!--
-  关于我页面组件
-  
-  功能：
-  - 展示个人标签
-  - 展示个人介绍内容
-  - 提供导航按钮
-  
-  SEO 优化：
-  - 使用语义化 HTML 标签（article, section, ul）
-  - 添加 ARIA 标签提升无障碍访问性
-  - 使用 itemscope/itemprop 添加微数据
-  
-  使用示例：
-  <AboutPage />
--->
-
 <template>
-    <PageSection page-id="关于我" title="关于我">
-        <!-- 个人介绍文章 - 使用 article 标签 -->
-        <article class="about-article" itemscope itemtype="https://schema.org/Person" aria-label="关于主核Kernyr的个人介绍">
-            <!-- 技能标签区域 - 使用 ul 列表 -->
-            <section class="tags-section" aria-label="技能标签">
+    <PageSection pageId="about" title="关于我">
+        <!-- 个人介绍文章 -->
+        <article class="aboutArticle" itemscope itemtype="https://schema.org/Person">
+            <!-- 技能标签 -->
+            <section class="tagsSection">
                 <ul class="tags" role="list">
-                    <li v-for="(tag, index) in ABOUT_TAGS" :key="index" class="tag" itemprop="knowsAbout">
+                    <li v-for="(tag, index) in aboutTags" :key="index" class="tag" itemprop="knowsAbout">
                         {{ tag }}
                     </li>
                 </ul>
             </section>
 
-            <!-- 介绍内容区域 -->
-            <section class="about-content" aria-label="个人介绍">
-                <p v-for="(line, index) in ABOUT_CONTENT" :key="index"
-                    :itemprop="index === 0 ? 'name' : (index === 1 ? 'description' : undefined)">
-                    {{ line }}
-                </p>
+            <!-- 介绍内容 -->
+            <section class="aboutContent">
+                <p v-for="(line, index) in aboutContent" :key="index">{{ line }}</p>
             </section>
         </article>
 
         <!-- 导航按钮 -->
         <template #buttons>
-            <nav class="about-nav" role="navigation" aria-label="页面导航">
-                <BaseButton variant="primary" @click="switchPage('我的项目')" aria-label="查看主核Kernyr的项目">
-                    我的项目
-                </BaseButton>
-                <BaseButton variant="secondary" @click="switchPage('主页')" aria-label="返回主页">
-                    返回
-                </BaseButton>
+            <nav class="aboutNav" role="navigation">
+                <BaseButton variant="primary" @click="switchPage('projects')">我的项目</BaseButton>
+                <BaseButton variant="secondary" @click="switchPage('home')">返回</BaseButton>
             </nav>
         </template>
     </PageSection>
 </template>
 
 <script setup lang="ts">
-/**
- * 关于我页面组件
- * 
- * 展示个人介绍信息，包括：
- * - 技能标签（设计、开发、创造）
- * - 详细的个人介绍文字
- * 
- * SEO 说明：
- * - 使用 Schema.org Person 微数据
- * - 语义化的 article/section 结构
- */
+// 关于我页面 - 展示个人标签和介绍内容
+// 用法：<AboutPage />
 
-import { ABOUT_TAGS, ABOUT_CONTENT } from '~/config/site.config'
+import { aboutTags, aboutContent } from '~/config/site.config'
 
-// ==================== Composables ====================
-
-const { switchPage } = usePageNavigation()
+const { switchPage } = usePageNavigation() // 获取页面切换方法
 </script>
 
 <style scoped>
-/* ==================== 文章容器 ==================== */
-
-.about-article {
+/* 文章容器 */
+.aboutArticle {
     display: flex;
+    /* 弹性布局 */
     flex-direction: column;
+    /* 垂直排列 */
     align-items: center;
+    /* 水平居中 */
     width: 100%;
+    /* 宽度100% */
 }
 
-/* ==================== 标签区域 ==================== */
-
-.tags-section {
+/* 标签区域 */
+.tagsSection {
     width: 100%;
+    /* 宽度100% */
     display: flex;
+    /* 弹性布局 */
     justify-content: center;
+    /* 水平居中 */
 }
 
-/* ==================== 标签容器 ==================== */
-
+/* 标签容器 */
 .tags {
     display: flex;
+    /* 弹性布局 */
     flex-direction: row;
+    /* 水平排列 */
     justify-content: center;
+    /* 水平居中 */
     align-items: center;
+    /* 垂直居中 */
     margin-bottom: 20px;
+    /* 底部间距 */
     padding: 0;
+    /* 移除内边距 */
     list-style: none;
+    /* 移除列表样式 */
 }
 
-/* ==================== 单个标签样式 ==================== */
-
+/* 单个标签 */
 .tag {
     box-shadow: var(--shadow-primary);
+    /* 阴影效果 */
     padding: 8px 15px;
+    /* 内边距 */
     margin: 10px 15px;
+    /* 外边距 */
     border-radius: var(--border-radius-tag);
+    /* 圆角 */
     background-color: var(--white);
+    /* 白色背景 */
     transition: var(--transition-default);
+    /* 过渡动画 */
 }
 
 /* 标签悬停效果 */
 .tag:hover {
     scale: 1.1;
+    /* 放大1.1倍 */
 }
 
-/* ==================== 介绍内容容器 ==================== */
-
-.about-content {
+/* 介绍内容容器 */
+.aboutContent {
     display: flex;
+    /* 弹性布局 */
     flex-direction: column;
+    /* 垂直排列 */
     justify-content: center;
+    /* 垂直居中 */
     align-items: center;
+    /* 水平居中 */
     text-align: center;
+    /* 文本居中 */
 }
 
-/* ==================== 介绍段落样式 ==================== */
-
-.about-content p {
+/* 介绍段落 */
+.aboutContent p {
     margin: 5px 0;
+    /* 上下间距 */
     font-size: 14px;
+    /* 字体大小 */
     color: var(--text-color);
+    /* 文本颜色 */
     white-space: normal;
+    /* 正常换行 */
 }
 
-/* ==================== 导航样式 ==================== */
-
-.about-nav {
+/* 导航 */
+.aboutNav {
     display: contents;
+    /* 使用contents布局 */
 }
 </style>

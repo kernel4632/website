@@ -25,9 +25,6 @@ declare global {
   const definePayloadReviver: typeof import('../../node_modules/nuxt/dist/app/composables/payload').definePayloadReviver
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
-  const generateBreadcrumbSchema: typeof import('../../app/composables/useSeo').generateBreadcrumbSchema
-  const generatePageSchema: typeof import('../../app/composables/useSeo').generatePageSchema
-  const generateProjectSchema: typeof import('../../app/composables/useSeo').generateProjectSchema
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
@@ -220,9 +217,6 @@ declare module 'vue' {
     readonly definePayloadReviver: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['definePayloadReviver']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly generateBreadcrumbSchema: UnwrapRef<typeof import('../../app/composables/useSeo')['generateBreadcrumbSchema']>
-    readonly generatePageSchema: UnwrapRef<typeof import('../../app/composables/useSeo')['generatePageSchema']>
-    readonly generateProjectSchema: UnwrapRef<typeof import('../../app/composables/useSeo')['generateProjectSchema']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>

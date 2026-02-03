@@ -1,179 +1,51 @@
-/**
- * SEO 组合式函数
- * 
- * 提供动态 SEO 元数据管理功能
- * 支持页面级别的 SEO 配置
- */
+// SEO管理 - 动态设置页面SEO元数据
+// 用法：useSeo({ title: '关于我', description: '了解更多' })
 
 import {
-  SITE_NAME,
-  SITE_DESCRIPTION,
-  SITE_URL,
-  SITE_LANGUAGE,
-  SITE_LOCALE,
-  OG_IMAGE,
-  SITE_AUTHOR,
+  siteName,
+  siteDescription,
+  siteUrl,
+  siteLocale,
+  ogImage,
 } from '~/config/site.config'
 
-/**
- * SEO 配置接口
- */
+// SEO配置接口
 interface SeoConfig {
-  /** 页面标题 */
-  title?: string
-  /** 页面描述 */
-  description?: string
-  /** 页面关键词 */
-  keywords?: string[]
-  /** 页面 URL 路径 */
-  path?: string
-  /** Open Graph 图片 */
-  image?: string
-  /** 页面类型 */
-  type?: 'website' | 'article' | 'profile'
+  title?: string // 页面标题
+  description?: string // 页面描述
+  keywords?: string[] // 页面关键词
+  path?: string // 页面路径
+  image?: string // 分享图片
+  type?: 'website' | 'article' | 'profile' // 页面类型
 }
 
-/**
- * 使用 SEO 配置
- * 
- * @param config - SEO 配置对象
- * 
- * @example
- * ```ts
- * // 在页面组件中使用
- * useSeo({
- *   title: '关于我',
- *   description: '了解更多关于主核Kernyr的信息',
- *   keywords: ['个人介绍', '技术博客'],
- * })
- * ```
- */
+// 使用SEO配置
+// 用法：useSeo({ title: '关于我', description: '了解更多' })
 export function useSeo(config: SeoConfig = {}) {
-  // 构建完整标题
-  const fullTitle = config.title 
-    ? `${config.title} - ${SITE_NAME}` 
-    : `${SITE_NAME} - 个人主页`
-  
-  // 使用默认描述或自定义描述
-  const description = config.description || SITE_DESCRIPTION
-  
-  // 构建完整 URL
-  const url = config.path 
-    ? `${SITE_URL}${config.path}` 
-    : SITE_URL
-  
-  // 构建图片 URL
-  const imageUrl = config.image 
-    ? `${SITE_URL}${config.image}` 
-    : `${SITE_URL}${OG_IMAGE}`
-  
-  // 构建关键词字符串
-  const keywords = config.keywords?.join(', ') || ''
+  const fullTitle = config.title ? `${config.title} - ${siteName}` : `${siteName} - 个人主页` // 构建完整标题
+  const description = config.description || siteDescription // 使用自定义或默认描述
+  const url = config.path ? `${siteUrl}${config.path}` : siteUrl // 构建完整URL
+  const imageUrl = config.image ? `${siteUrl}${config.image}` : `${siteUrl}${ogImage}` // 构建图片URL
+  const keywords = config.keywords?.join(', ') || '' // 构建关键词字符串
 
-  // 使用 Nuxt 的 useHead 设置 SEO 元数据
-  useHead({
-    title: fullTitle,
-    meta: [
-      // 基础 SEO
-      { name: 'description', content: description },
-      ...(keywords ? [{ name: 'keywords', content: keywords }] : []),
-      
-      // Open Graph
-      { property: 'og:title', content: fullTitle },
-      { property: 'og:description', content: description },
-      { property: 'og:url', content: url },
-      { property: 'og:image', content: imageUrl },
-      { property: 'og:type', content: config.type || 'website' },
-      { property: 'og:locale', content: SITE_LOCALE },
-      { property: 'og:site_name', content: SITE_NAME },
-      
-      // Twitter Card
-      { name: 'twitter:title', content: fullTitle },
-      { name: 'twitter:description', content: description },
-      { name: 'twitter:image', content: imageUrl },
+  useHead({ // 设置页面head信息
+    title: fullTitle, // 设置标题
+    meta: [ // 设置meta标签
+      { name: 'description', content: description }, // 描述
+      ...(keywords ? [{ name: 'keywords', content: keywords }] : []), // 关键词（如果有）
+      { property: 'og:title', content: fullTitle }, // OG标题
+      { property: 'og:description', content: description }, // OG描述
+      { property: 'og:url', content: url }, // OG URL
+      { property: 'og:image', content: imageUrl }, // OG图片
+      { property: 'og:type', content: config.type || 'website' }, // OG类型
+      { property: 'og:locale', content: siteLocale }, // OG地区
+      { property: 'og:site_name', content: siteName }, // OG站点名
+      { name: 'twitter:title', content: fullTitle }, // Twitter标题
+      { name: 'twitter:description', content: description }, // Twitter描述
+      { name: 'twitter:image', content: imageUrl }, // Twitter图片
     ],
-    link: [
-      { rel: 'canonical', href: url },
+    link: [ // 设置link标签
+      { rel: 'canonical', href: url }, // 规范链接
     ],
   })
-}
-
-/**
- * 生成页面结构化数据
- * 
- * @param pageData - 页面数据
- * @returns JSON-LD 结构化数据对象
- */
-export function generatePageSchema(pageData: {
-  name: string
-  description: string
-  url: string
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    'name': pageData.name,
-    'description': pageData.description,
-    'url': pageData.url,
-    'isPartOf': {
-      '@type': 'WebSite',
-      'name': SITE_NAME,
-      'url': SITE_URL,
-    },
-    'author': {
-      '@type': 'Person',
-      'name': SITE_AUTHOR,
-    },
-    'inLanguage': SITE_LANGUAGE,
-  }
-}
-
-/**
- * 生成面包屑结构化数据
- * 
- * @param items - 面包屑项目列表
- * @returns JSON-LD 面包屑结构化数据
- */
-export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    'itemListElement': items.map((item, index) => ({
-      '@type': 'ListItem',
-      'position': index + 1,
-      'name': item.name,
-      'item': item.url,
-    })),
-  }
-}
-
-/**
- * 生成项目/作品结构化数据
- * 
- * @param project - 项目数据
- * @returns JSON-LD 创意作品结构化数据
- */
-export function generateProjectSchema(project: {
-  name: string
-  description: string
-  url?: string
-  image?: string
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    'name': project.name,
-    'description': project.description,
-    ...(project.url && { 'url': project.url }),
-    ...(project.image && { 
-      'image': {
-        '@type': 'ImageObject',
-        'url': `${SITE_URL}${project.image}`,
-      }
-    }),
-    'author': {
-      '@type': 'Person',
-      'name': SITE_AUTHOR,
-    },
-  }
 }

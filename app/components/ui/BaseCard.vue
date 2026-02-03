@@ -1,291 +1,218 @@
-<!--
-  基础卡片组件
-  
-  功能：
-  - 展示图标、标题和简介
-  - 支持点击跳转链接
-  - 支持不同类型的卡片样式（友情链接/项目）
-  - 统一的悬停和点击动画效果
-  
-  SEO 优化：
-  - 使用语义化 HTML 标签（article, h3）
-  - 外部链接添加 rel="noopener noreferrer"
-  - 添加 ARIA 标签提升无障碍访问性
-  - 图片添加详细的 alt 描述
-  
-  Props:
-  - title: 卡片标题
-  - description: 卡片描述
-  - icon: 图标路径或 URL
-  - link: 链接地址（可选，# 表示无链接）
-  - type: 卡片类型 ('friend' | 'project')
-  
-  使用示例：
-  <BaseCard 
-    title="项目名称" 
-    description="项目描述" 
-    icon="/icons/project.svg"
-    link="https://example.com"
-    type="project"
-  />
--->
-
 <template>
-    <!-- 卡片容器 - 使用 article 标签表示独立内容 -->
-    <article 
-        class="base-card" 
-        :class="{ 'base-card--clickable': hasValidLink }"
-        @click="handleClick"
-        @keydown.enter="handleClick"
-        @keydown.space.prevent="handleClick"
-        :tabindex="hasValidLink ? 0 : -1"
-        :role="hasValidLink ? 'link' : undefined"
-        :aria-label="hasValidLink ? `访问${title}` : undefined"
-        itemscope
-        :itemtype="type === 'project' ? 'https://schema.org/CreativeWork' : 'https://schema.org/Person'"
-    >
-        <!-- 图标 - 根据类型应用不同样式 -->
-        <img 
-            :src="iconPath" 
-            :alt="`${title}的${type === 'friend' ? '头像' : '图标'}`" 
-            :class="iconClass"
-            width="80"
-            height="80"
-            loading="lazy"
-            itemprop="image"
-        />
+    <article class="baseCard" :class="{ 'baseCard--clickable': hasValidLink }" @click="handleClick" @keydown.enter="handleClick" @keydown.space.prevent="handleClick" :tabindex="hasValidLink ? 0 : -1" :role="hasValidLink ? 'link' : undefined">
+        <!-- 图标 -->
+        <img :src="iconPath" :alt="`${title}的${type === 'friend' ? '头像' : '图标'}`" :class="iconClass" width="80" height="80" loading="lazy" />
 
-        <!-- 标题 - 使用 h3 避免破坏页面标题层级 -->
-        <h3 class="base-card__title" itemprop="name">{{ title }}</h3>
+        <!-- 标题 -->
+        <h3 class="baseCard__title">{{ title }}</h3>
 
         <!-- 描述 -->
-        <p class="base-card__description" itemprop="description">{{ description }}</p>
+        <p class="baseCard__description">{{ description }}</p>
 
-        <!-- 隐藏的链接 - 用于 SEO 和无障碍访问 -->
-        <a 
-            v-if="hasValidLink"
-            :href="link"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="base-card__link"
-            :aria-label="`访问${title}的网站`"
-            itemprop="url"
-            @click.stop
-        >
-            <span class="visually-hidden">访问{{ title }}</span>
+        <!-- 隐藏的链接（用于SEO） -->
+        <a v-if="hasValidLink" :href="link" target="_blank" rel="noopener noreferrer" class="baseCard__link" @click.stop>
+            <span class="visuallyHidden">访问{{ title }}</span>
         </a>
     </article>
 </template>
 
 <script setup lang="ts">
-/**
- * 基础卡片组件
- * 
- * 用于展示友情链接和项目信息的通用卡片组件。
- * 
- * SEO 说明：
- * - 使用 Schema.org 微数据（Person/CreativeWork）
- * - 外部链接添加安全属性
- * - 语义化的 article/h3/p 结构
- */
+// 基础卡片组件 - 展示图标、标题和简介，支持点击跳转
+// 用法：<BaseCard title="标题" description="描述" icon="图标路径" link="链接" type="friend" />
 
 import type { CardType } from '~/types'
 
-// ==================== Props 定义 ====================
-
 interface Props {
-    /** 卡片标题 */
-    title: string
-    /** 卡片描述 */
-    description: string
-    /** 图标路径或 URL */
-    icon: string
-    /** 链接地址（可选，# 表示无链接） */
-    link?: string
-    /** 
-     * 卡片类型
-     * - friend: 友情链接卡片（圆形头像）
-     * - project: 项目卡片（方形图标）
-     */
-    type?: CardType
+    title: string // 卡片标题
+    description: string // 卡片描述
+    icon: string // 图标路径或URL
+    link?: string // 链接地址（#表示无链接）
+    type?: CardType // 卡片类型（friend朋友 project项目）
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    link: '#',
-    type: 'friend',
+    link: '#', // 默认无链接
+    type: 'friend', // 默认为朋友卡片
 })
 
-// ==================== 计算属性 ====================
-
-/**
- * 计算图标路径
- * 如果是完整 URL 则直接使用，否则添加 /assets/ 前缀
- */
-const iconPath = computed(() => {
-    if (props.icon.startsWith('http')) {
-        return props.icon
-    }
-    return `/assets/${props.icon}`
+const iconPath = computed(() => { // 计算图标路径
+    if (props.icon.startsWith('http')) return props.icon // 如果是完整URL就直接用
+    return `/assets/${props.icon}` // 否则添加/assets/前缀
 })
 
-/**
- * 计算图标类名
- * 根据卡片类型应用不同样式
- */
-const iconClass = computed(() => [
-    'base-card__icon',
-    props.type === 'friend'
-        ? 'base-card__icon--friend'
-        : 'base-card__icon--project',
+const iconClass = computed(() => [ // 计算图标类名
+    'baseCard__icon', // 基础类名
+    props.type === 'friend' ? 'baseCard__icon--friend' : 'baseCard__icon--project', // 根据类型添加类名
 ])
 
-/**
- * 检查是否有有效链接
- */
-const hasValidLink = computed(() => {
-    return props.link && props.link !== '#'
+const hasValidLink = computed(() => { // 检查是否有有效链接
+    return props.link && props.link !== '#' // 链接存在且不是#
 })
 
-// ==================== 方法 ====================
-
-/**
- * 处理卡片点击事件
- * 如果有有效链接，在新窗口打开
- */
-function handleClick(): void {
-    if (hasValidLink.value) {
-        window.open(props.link, '_blank', 'noopener,noreferrer')
-    }
+function handleClick(): void { // 处理卡片点击
+    if (!hasValidLink.value) return // 如果没有有效链接就不处理
+    window.open(props.link, '_blank', 'noopener,noreferrer') // 在新窗口打开链接
 }
 </script>
 
 <style scoped>
-/* ==================== 卡片容器样式 ==================== */
-
-.base-card {
-    /* 尺寸 */
+/* 卡片容器 */
+.baseCard {
     max-height: 280px;
+    /* 最大高度 */
     padding: 8vw 20px;
+    /* 内边距 */
     margin: 25px;
+    /* 外边距 */
     width: 100%;
+    /* 宽度100% */
     max-width: var(--card-max-width);
-
-    /* 外观 */
+    /* 最大宽度 */
     background-color: var(--white);
+    /* 白色背景 */
     border-radius: var(--border-radius-card);
+    /* 圆角 */
     box-shadow: var(--shadow-primary);
-
-    /* 布局 */
+    /* 阴影效果 */
     display: flex;
+    /* 弹性布局 */
     flex-direction: column;
+    /* 垂直排列 */
     justify-content: center;
+    /* 垂直居中 */
     align-items: center;
+    /* 水平居中 */
     position: relative;
-
-    /* 文本处理 */
+    /* 相对定位 */
     word-break: break-word;
+    /* 单词换行 */
     white-space: pre-wrap;
-
-    /* 过渡动画 */
+    /* 保留空白符 */
     transition: var(--transition-default);
+    /* 过渡动画 */
 }
 
-/* ==================== 可点击卡片样式 ==================== */
-
-.base-card--clickable {
+/* 可点击卡片 */
+.baseCard--clickable {
     cursor: pointer;
+    /* 鼠标指针 */
 }
 
-/* ==================== 卡片悬停效果 ==================== */
-
-.base-card:hover {
+/* 卡片悬停效果 */
+.baseCard:hover {
     filter: brightness(1.02);
+    /* 亮度102% */
     box-shadow: var(--shadow-hover);
+    /* 悬停阴影 */
 }
 
-/* ==================== 卡片焦点效果（无障碍访问） ==================== */
-
-.base-card:focus {
+/* 卡片焦点效果 */
+.baseCard:focus {
     outline: 2px solid var(--theme-color);
+    /* 主题色边框 */
     outline-offset: 4px;
+    /* 边框偏移 */
 }
 
-/* ==================== 卡片点击效果 ==================== */
-
-.base-card:active {
+/* 卡片点击效果 */
+.baseCard:active {
     scale: 0.95;
+    /* 缩小0.95倍 */
     filter: brightness(1);
+    /* 亮度100% */
 }
 
-/* ==================== 卡片图标基础样式 ==================== */
-
-.base-card__icon {
+/* 卡片图标基础样式 */
+.baseCard__icon {
     width: var(--card-icon-size);
+    /* 图标宽度 */
     height: var(--card-icon-size);
+    /* 图标高度 */
     margin-bottom: 10px;
+    /* 底部间距 */
     object-fit: cover;
-
-    /* 优化渲染性能 */
+    /* 图片填充方式 */
     will-change: filter;
+    /* 优化动画性能 */
     transition: filter var(--transition-fast);
+    /* 过渡动画 */
 }
 
-/* ==================== 友情链接图标样式 ==================== */
-
-/* 圆形头像，带边框和阴影 */
-.base-card__icon--friend {
+/* 朋友图标样式（圆形头像） */
+.baseCard__icon--friend {
     border-radius: var(--border-radius-circle);
+    /* 圆形 */
     border: 3px solid var(--white);
+    /* 白色边框 */
     filter: drop-shadow(var(--shadow-primary));
+    /* 阴影效果 */
 }
 
-/* ==================== 项目图标样式 ==================== */
-
-/* 方形图标，无边框 */
-.base-card__icon--project {
+/* 项目图标样式（方形图标） */
+.baseCard__icon--project {
     border-radius: 0;
+    /* 无圆角 */
     border: none;
+    /* 无边框 */
     filter: none;
+    /* 无滤镜 */
 }
 
-/* ==================== 卡片标题样式 ==================== */
-
-.base-card__title {
+/* 卡片标题 */
+.baseCard__title {
     font-size: 40px;
+    /* 字体大小 */
     margin: 0;
+    /* 移除外边距 */
     font-weight: bold;
+    /* 粗体 */
     color: var(--theme-color);
+    /* 主题色 */
 }
 
-/* ==================== 卡片描述样式 ==================== */
-
-.base-card__description {
+/* 卡片描述 */
+.baseCard__description {
     color: var(--text-color);
+    /* 文本颜色 */
     font-size: 14px;
+    /* 字体大小 */
     margin-top: 10px;
+    /* 顶部间距 */
     text-align: center;
+    /* 文本居中 */
 }
 
-/* ==================== 隐藏链接样式 ==================== */
-
-.base-card__link {
+/* 隐藏链接 */
+.baseCard__link {
     position: absolute;
+    /* 绝对定位 */
     inset: 0;
+    /* 填满整个卡片 */
     z-index: 1;
+    /* 层级1 */
     opacity: 0;
+    /* 透明 */
 }
 
-/* ==================== 视觉隐藏（仅屏幕阅读器可见） ==================== */
-
-.visually-hidden {
+/* 视觉隐藏（仅屏幕阅读器可见） */
+.visuallyHidden {
     position: absolute;
+    /* 绝对定位 */
     width: 1px;
+    /* 宽度1px */
     height: 1px;
+    /* 高度1px */
     padding: 0;
+    /* 无内边距 */
     margin: -1px;
+    /* 负外边距 */
     overflow: hidden;
+    /* 隐藏溢出 */
     clip: rect(0, 0, 0, 0);
+    /* 裁剪 */
     white-space: nowrap;
+    /* 不换行 */
     border: 0;
+    /* 无边框 */
 }
 </style>

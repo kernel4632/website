@@ -1,107 +1,73 @@
-<!--
-  友情链接页面组件
-  
-  功能：
-  - 展示朋友卡片列表
-  - 从 JSON 数据加载朋友信息
-  - 提供导航按钮
-  
-  SEO 优化：
-  - 使用语义化 HTML 标签（section, ul, li）
-  - 添加 ARIA 标签提升无障碍访问性
-  - 外部链接添加 rel="noopener noreferrer"
-  
-  使用示例：
-  <FriendsPage />
--->
-
 <template>
-    <PageSection page-id="友情链接" title="我的朋友">
+    <PageSection pageId="friends" title="我的朋友">
         <!-- 朋友列表区域 -->
-        <section class="friends-section" aria-label="友情链接列表">
-            <!-- 朋友卡片列表 - 使用 ul 语义化列表 -->
-            <ul class="friends-grid" role="list">
-                <li v-for="(friend, index) in friendsData" :key="index" class="friend-item">
-                    <BaseCard :title="friend.名字" :description="friend.简介" :icon="friend.头像" :link="friend.链接"
-                        type="friend" :aria-label="`访问${friend.名字}的主页`" />
+        <section class="friendsSection">
+            <!-- 朋友卡片列表 -->
+            <ul class="friendsGrid" role="list">
+                <li v-for="(friend, index) in friendsData" :key="index" class="friendItem">
+                    <BaseCard :title="friend.name" :description="friend.intro" :icon="friend.avatar" :link="friend.link" type="friend" />
                 </li>
             </ul>
         </section>
 
         <!-- 导航按钮 -->
         <template #buttons>
-            <nav class="friends-nav" role="navigation" aria-label="页面导航">
-                <BaseButton variant="primary" @click="switchPage('联系方式')" aria-label="查看联系方式">
-                    与我联系
-                </BaseButton>
-                <BaseButton variant="secondary" @click="switchPage('主页')" aria-label="返回主页">
-                    返回
-                </BaseButton>
+            <nav class="friendsNav" role="navigation">
+                <BaseButton variant="primary" @click="switchPage('contact')">与我联系</BaseButton>
+                <BaseButton variant="secondary" @click="switchPage('home')">返回</BaseButton>
             </nav>
         </template>
     </PageSection>
 </template>
 
 <script setup lang="ts">
-/**
- * 友情链接页面组件
- * 
- * 展示朋友/合作伙伴的链接卡片，包括：
- * - 头像
- * - 名称
- * - 简介
- * - 链接
- * 
- * SEO 说明：
- * - 使用语义化的 ul/li 列表结构
- * - 外部链接自动添加安全属性
- */
+// 友情链接页面 - 展示朋友的头像、名称、简介和链接
+// 用法：<FriendsPage />
 
-// ==================== Composables ====================
+const { switchPage } = usePageNavigation() // 获取页面切换方法
+const { friendsData, fetchData } = useSiteData() // 获取朋友数据
 
-const { switchPage } = usePageNavigation()
-const { friendsData, fetchData } = useSiteData()
-
-// ==================== 生命周期 ====================
-
-/**
- * 组件挂载时获取数据
- */
-onMounted(() => {
-    fetchData()
-})
+onMounted(() => fetchData()) // 组件挂载时获取数据
 </script>
 
 <style scoped>
-/* ==================== 朋友区域容器 ==================== */
-
-.friends-section {
+/* 朋友区域 */
+.friendsSection {
     width: 100%;
+    /* 宽度100% */
 }
 
-/* ==================== 朋友卡片网格布局 ==================== */
-
-.friends-grid {
+/* 朋友卡片网格 */
+.friendsGrid {
     padding: 0 20px;
+    /* 左右内边距 */
     margin: 0;
+    /* 移除外边距 */
     width: 100%;
+    /* 宽度100% */
     display: flex;
+    /* 弹性布局 */
     flex-direction: row;
+    /* 水平排列 */
     flex-wrap: wrap;
+    /* 允许换行 */
     align-items: center;
+    /* 垂直居中 */
     justify-content: center;
+    /* 水平居中 */
     list-style: none;
+    /* 移除列表样式 */
 }
 
-/* ==================== 朋友列表项 ==================== */
-
-.friend-item {
+/* 朋友列表项 */
+.friendItem {
     display: contents;
+    /* 使用contents布局 */
 }
 
-/* ==================== 导航样式 ==================== */
-
-.friends-nav {
+/* 导航 */
+.friendsNav {
     display: contents;
+    /* 使用contents布局 */
 }
 </style>

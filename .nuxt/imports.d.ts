@@ -29,7 +29,7 @@ export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callba
 export { setInterval } from '#app/compat/interval';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { usePageNavigation } from '../app/composables/usePageNavigation';
-export { useSeo, generatePageSchema, generateBreadcrumbSchema, generateProjectSchema } from '../app/composables/useSeo';
+export { useSeo } from '../app/composables/useSeo';
 export { useSiteData, FriendData, ProjectData, ContactData, SiteData } from '../app/composables/useSiteData';
 export { copyToClipboard, openLinkOrCopy } from '../app/utils/clipboard';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';

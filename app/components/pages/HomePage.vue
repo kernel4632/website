@@ -1,131 +1,109 @@
-<!--
-  主页组件
-  
-  功能：
-  - 展示头像、名称和座右铭
-  - 提供导航按钮
-  - 显示备案信息
-  
-  SEO 优化：
-  - 使用语义化 HTML 标签（header, h1, h2, nav）
-  - 添加 ARIA 标签提升无障碍访问性
-  - 图片添加详细的 alt 描述
-  
-  使用示例：
-  <HomePage />
--->
-
 <template>
-    <PageSection page-id="主页">
-        <!-- 页面头部区域 - 使用 header 标签表示页面头部 -->
-        <header class="home-header" role="banner">
-            <!-- 头像 - 添加详细的 alt 描述 -->
-            <img :src="AVATAR_PATH" :alt="`${SITE_NAME}的头像 - 技术探索者、游戏开发追梦人`" class="avatar" width="150" height="150"
-                loading="eager" fetchpriority="high" />
+    <PageSection pageId="home">
+        <!-- 页面头部 -->
+        <header class="homeHeader" role="banner">
+            <!-- 头像 -->
+            <img :src="avatarPath" :alt="`${siteName}的头像`" class="avatar" width="150" height="150" loading="eager" fetchpriority="high" />
 
-            <!-- 名称 - 使用 h1 作为页面主标题 -->
-            <h1 class="name" itemprop="name">{{ SITE_NAME }}</h1>
+            <!-- 名称 -->
+            <h1 class="name" itemprop="name">{{ siteName }}</h1>
 
-            <!-- 座右铭 - 使用 h2 作为副标题 -->
-            <h2 class="motto" itemprop="description">{{ SITE_MOTTO }}</h2>
+            <!-- 座右铭 -->
+            <h2 class="motto" itemprop="description">{{ siteMotto }}</h2>
         </header>
 
-        <!-- 导航按钮 - 使用 nav 标签表示导航区域 -->
+        <!-- 导航按钮 -->
         <template #buttons>
-            <nav class="home-nav" role="navigation" aria-label="主要导航">
-                <BaseButton variant="primary" @click="switchPage('关于我')" aria-label="了解更多关于主核Kernyr的信息">
-                    了解更多
-                </BaseButton>
-                <BaseButton variant="secondary" @click="switchPage('友情链接')" aria-label="查看主核Kernyr的朋友们">
-                    我的朋友
-                </BaseButton>
+            <nav class="homeNav" role="navigation" aria-label="主要导航">
+                <BaseButton variant="primary" @click="switchPage('about')">了解更多</BaseButton>
+                <BaseButton variant="secondary" @click="switchPage('friends')">我的朋友</BaseButton>
             </nav>
         </template>
 
-        <!-- 备案信息 - 页脚区域 -->
+        <!-- 备案信息 -->
         <FilingInfo />
     </PageSection>
 </template>
 
 <script setup lang="ts">
-/**
- * 主页组件
- * 
- * 作为网站的首屏展示，包含：
- * - 个人头像（使用 eager loading 优化 LCP）
- * - 网站名称（h1 标签，SEO 核心）
- * - 座右铭（h2 标签）
- * - 导航按钮
- * - 备案信息
- */
+// 主页组件 - 展示头像、名称、座右铭和导航按钮
+// 用法：<HomePage />
 
-import {
-    SITE_NAME,
-    SITE_MOTTO,
-    AVATAR_PATH,
-} from '~/config/site.config'
+import { siteName, siteMotto, avatarPath } from '~/config/site.config'
 
-// ==================== Composables ====================
-
-const { switchPage } = usePageNavigation()
+const { switchPage } = usePageNavigation() // 获取页面切换方法
 </script>
 
 <style scoped>
-/* ==================== 页面头部样式 ==================== */
-
-.home-header {
+/* 页面头部 */
+.homeHeader {
     display: flex;
+    /* 弹性布局 */
     flex-direction: column;
+    /* 垂直排列 */
     align-items: center;
+    /* 水平居中 */
     text-align: center;
+    /* 文本居中 */
 }
 
-/* ==================== 头像样式 ==================== */
-
+/* 头像 */
 .avatar {
-    /* 尺寸 */
     width: var(--avatar-size);
+    /* 使用CSS变量设置宽度 */
     height: var(--avatar-size);
+    /* 使用CSS变量设置高度 */
     margin-bottom: 20px;
-
-    /* 外观 */
+    /* 底部间距 */
     background-color: var(--white);
+    /* 白色背景 */
     border-radius: var(--border-radius-circle);
+    /* 圆形边框 */
     object-fit: cover;
+    /* 图片填充方式 */
     border: 3px solid var(--white);
+    /* 白色边框 */
     filter: drop-shadow(var(--shadow-avatar));
-
-    /* 性能优化 */
+    /* 阴影效果 */
     will-change: filter;
+    /* 优化动画性能 */
     transition: filter var(--transition-fast);
+    /* 过渡动画 */
 }
 
 /* 头像悬停效果 */
 .avatar:hover {
     filter: drop-shadow(var(--shadow-avatar-hover));
+    /* 悬停时的阴影 */
 }
 
-/* ==================== 名称样式 ==================== */
-
+/* 名称 */
 .name {
     font-size: 40px;
+    /* 字体大小 */
     margin: 0;
+    /* 移除外边距 */
     font-weight: bold;
+    /* 粗体 */
     color: var(--theme-color);
+    /* 主题色 */
 }
 
-/* ==================== 座右铭样式 ==================== */
-
+/* 座右铭 */
 .motto {
     font-size: 12px;
+    /* 字体大小 */
     font-weight: 700;
+    /* 粗体 */
     margin-bottom: 20px;
+    /* 底部间距 */
     color: var(--theme-color);
+    /* 主题色 */
 }
 
-/* ==================== 导航样式 ==================== */
-
-.home-nav {
+/* 导航 */
+.homeNav {
     display: contents;
+    /* 使用contents布局 */
 }
 </style>

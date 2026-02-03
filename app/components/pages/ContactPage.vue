@@ -1,170 +1,141 @@
-<!--
-  联系方式页面组件
-  
-  功能：
-  - 展示联系方式列表
-  - 支持点击打开链接或复制文本
-  - 从 JSON 数据加载联系方式
-  
-  SEO 优化：
-  - 使用语义化 HTML 标签（section, address, ul）
-  - 添加 ARIA 标签提升无障碍访问性
-  - 使用 address 标签标记联系信息
-  
-  使用示例：
-  <ContactPage />
--->
-
 <template>
-    <PageSection page-id="联系方式" title="与我联系">
-        <!-- 联系方式区域 - 使用 address 标签表示联系信息 -->
-        <address class="contacts-section" aria-label="联系方式列表">
+    <PageSection pageId="contact" title="与我联系">
+        <!-- 联系方式区域 -->
+        <address class="contactsSection">
             <!-- 联系方式列表 -->
-            <ul class="contacts-list" role="list">
-                <li v-for="(contact, index) in contactsData" :key="index" class="contact-item"
-                    @click="handleContactClick(contact)" role="button" tabindex="0"
-                    :aria-label="`${contact.类型}: ${contact.文本}${contact.链接 ? '，点击访问' : '，点击复制'}`"
-                    @keydown.enter="handleContactClick(contact)" @keydown.space.prevent="handleContactClick(contact)">
+            <ul class="contactsList" role="list">
+                <li v-for="(contact, index) in contactsData" :key="index" class="contactItem" @click="handleContactClick(contact)" role="button" tabindex="0" @keydown.enter="handleContactClick(contact)" @keydown.space.prevent="handleContactClick(contact)">
                     <!-- 联系方式图标 -->
-                    <img :src="`/assets/${contact.图标}`" :alt="`${contact.类型}图标`" class="contact-icon" width="40"
-                        height="40" loading="lazy" />
+                    <img :src="`/assets/${contact.icon}`" :alt="`${contact.type}图标`" class="contactIcon" width="40" height="40" loading="lazy" />
 
                     <!-- 联系方式文本 -->
-                    <span class="contact-text">{{ contact.文本 }}</span>
+                    <span class="contactText">{{ contact.text }}</span>
                 </li>
             </ul>
         </address>
 
         <!-- 导航按钮 -->
         <template #buttons>
-            <nav class="contact-nav" role="navigation" aria-label="页面导航">
-                <BaseButton variant="secondary" @click="switchPage('友情链接')" aria-label="返回友情链接页面">
-                    返回
-                </BaseButton>
+            <nav class="contactNav" role="navigation">
+                <BaseButton variant="secondary" @click="switchPage('friends')">返回</BaseButton>
             </nav>
         </template>
     </PageSection>
 </template>
 
 <script setup lang="ts">
-/**
- * 联系方式页面组件
- * 
- * 展示各种联系方式，包括：
- * - QQ
- * - 微信
- * - 哔哩哔哩
- * - GitHub
- * 
- * SEO 说明：
- * - 使用 address 标签标记联系信息（符合 HTML5 语义）
- * - 添加键盘导航支持（无障碍访问）
- */
+// 联系方式页面 - 展示QQ、微信、哔哩哔哩、GitHub等联系方式
+// 用法：<ContactPage />
 
 import type { ContactData } from '~/types'
 import { openLinkOrCopy } from '~/utils/clipboard'
 
-// ==================== Composables ====================
+const { switchPage } = usePageNavigation() // 获取页面切换方法
+const { contactsData, fetchData } = useSiteData() // 获取联系方式数据
 
-const { switchPage } = usePageNavigation()
-const { contactsData, fetchData } = useSiteData()
+onMounted(() => fetchData()) // 组件挂载时获取数据
 
-// ==================== 生命周期 ====================
-
-/**
- * 组件挂载时获取数据
- */
-onMounted(() => {
-    fetchData()
-})
-
-// ==================== 方法 ====================
-
-/**
- * 处理联系方式点击事件
- * 如果有链接则打开，否则复制文本到剪贴板
- * 
- * @param contact - 联系方式数据
- */
+// 处理联系方式点击 - 有链接就打开，没链接就复制
+// 用法：handleContactClick(contact)
 async function handleContactClick(contact: ContactData): Promise<void> {
-    await openLinkOrCopy(contact.链接, contact.文本)
+    await openLinkOrCopy(contact.link, contact.text) // 打开链接或复制文本
 }
 </script>
 
 <style scoped>
-/* ==================== 联系方式区域容器 ==================== */
-
-.contacts-section {
+/* 联系方式区域 */
+.contactsSection {
     width: 100%;
+    /* 宽度100% */
     font-style: normal;
+    /* 正常字体样式 */
 }
 
-/* ==================== 联系方式列表容器 ==================== */
-
-.contacts-list {
+/* 联系方式列表 */
+.contactsList {
     display: flex;
+    /* 弹性布局 */
     flex-direction: column;
+    /* 垂直排列 */
     align-items: center;
+    /* 水平居中 */
     justify-content: center;
+    /* 垂直居中 */
     width: 100%;
+    /* 宽度100% */
     padding: 20px 0;
+    /* 上下内边距 */
     margin: 0;
+    /* 移除外边距 */
     list-style: none;
+    /* 移除列表样式 */
 }
 
-/* ==================== 单个联系方式项 ==================== */
-
-.contact-item {
+/* 单个联系方式项 */
+.contactItem {
     display: flex;
+    /* 弹性布局 */
     justify-content: center;
+    /* 水平居中 */
     align-items: center;
+    /* 垂直居中 */
     margin: 15px 20px;
+    /* 外边距 */
     padding: 10px 0;
+    /* 上下内边距 */
     font-size: 30px;
+    /* 字体大小 */
     cursor: pointer;
-
-    /* 允许文本选择 */
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
+    /* 鼠标指针 */
     user-select: text;
-
+    /* 允许选择文本 */
     transition: var(--transition-default);
+    /* 过渡动画 */
 }
 
 /* 联系方式悬停效果 */
-.contact-item:hover {
+.contactItem:hover {
     scale: 1.05;
+    /* 放大1.05倍 */
 }
 
-/* 联系方式焦点效果（无障碍访问） */
-.contact-item:focus {
+/* 联系方式焦点效果 */
+.contactItem:focus {
     outline: 2px solid var(--theme-color);
+    /* 主题色边框 */
     outline-offset: 4px;
+    /* 边框偏移 */
     border-radius: 4px;
+    /* 圆角 */
 }
 
-/* ==================== 联系方式图标 ==================== */
-
-.contact-icon {
+/* 联系方式图标 */
+.contactIcon {
     width: 40px;
+    /* 宽度 */
     height: 40px;
+    /* 高度 */
     margin-right: 10px;
+    /* 右边距 */
     fill: var(--theme-color);
+    /* 填充颜色 */
     backdrop-filter: drop-shadow(0 0 10px var(--theme-color));
+    /* 阴影效果 */
 }
 
-/* ==================== 联系方式文本 ==================== */
-
-.contact-text {
+/* 联系方式文本 */
+.contactText {
     margin: 0;
+    /* 移除外边距 */
     color: var(--text-color);
+    /* 文本颜色 */
     font-size: 30px;
+    /* 字体大小 */
 }
 
-/* ==================== 导航样式 ==================== */
-
-.contact-nav {
+/* 导航 */
+.contactNav {
     display: contents;
+    /* 使用contents布局 */
 }
 </style>
