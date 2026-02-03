@@ -2,7 +2,6 @@
  * Nuxt 配置文件
  *
  * 项目名称：Kernyr 个人主页
- * 技术栈：Nuxt 3 + Vue 3 Composition API
  *
  * 配置说明：
  * - 使用 SSG (静态站点生成) 模式
@@ -112,7 +111,7 @@ export default defineNuxtConfig({
         },
         {
           property: "og:image",
-          content: "https://hujiarong.site/assets/avatar.jpg",
+          content: "https://hujiarong.site/images/avatar.jpg",
         },
         { property: "og:image:width", content: "512" },
         { property: "og:image:height", content: "512" },
@@ -130,7 +129,7 @@ export default defineNuxtConfig({
         },
         {
           name: "twitter:image",
-          content: "https://hujiarong.site/assets/avatar.jpg",
+          content: "https://hujiarong.site/images/avatar.jpg",
         },
         { name: "twitter:image:alt", content: "主核Kernyr的头像" },
 
@@ -238,7 +237,7 @@ export default defineNuxtConfig({
                 url: "https://hujiarong.site",
                 image: {
                   "@type": "ImageObject",
-                  url: "https://hujiarong.site/assets/avatar.jpg",
+                  url: "https://hujiarong.site/images/avatar.jpg",
                   width: 512,
                   height: 512,
                 },

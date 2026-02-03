@@ -6,7 +6,7 @@
             <ul class="contactsList" role="list">
                 <li v-for="(contact, index) in contactsData" :key="index" class="contactItem" @click="handleContactClick(contact)" role="button" tabindex="0" @keydown.enter="handleContactClick(contact)" @keydown.space.prevent="handleContactClick(contact)">
                     <!-- 联系方式图标 -->
-                    <img :src="`/assets/${contact.icon}`" :alt="`${contact.type}图标`" class="contactIcon" width="40" height="40" loading="lazy" />
+                    <img :src="`/images/${contact.icon}`" :alt="`${contact.type}图标`" class="contactIcon" width="40" height="40" loading="lazy" />
 
                     <!-- 联系方式文本 -->
                     <span class="contactText">{{ contact.text }}</span>
@@ -31,9 +31,7 @@ import type { ContactData } from '~/index'
 import { openLinkOrCopy } from '~/clipboard'
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
-const { contactsData, fetchData } = useSiteData() // 获取联系方式数据
-
-onMounted(() => fetchData()) // 组件挂载时获取数据
+const { contactsData } = useSiteData() // 获取联系方式数据（数据已在app.vue中统一加载）
 
 // 处理联系方式点击 - 有链接就打开，没链接就复制
 // 用法：handleContactClick(contact)

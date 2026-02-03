@@ -26,10 +26,12 @@
 // 用法：<App />
 
 const { initFromHash, setupHashChangeListener } = usePageNavigation() // 获取页面导航方法
+const { fetchData } = useSiteData() // 获取数据加载方法
 
 onMounted(() => { // 组件挂载时执行
   initFromHash() // 从URL hash初始化页面
   setupHashChangeListener() // 监听浏览器前进后退事件
+  fetchData() // 统一加载站点数据（只加载一次）
 })
 </script>
 

@@ -29,7 +29,7 @@
 		{
 			"name": "炼丹蓝图",
 			"intro": "蓝图式AI架构搭建工具",
-			"icon": "炼丹蓝图.svg",
+			"icon": "alchemyBlueprint.svg",
 			"url": "https://aib.hujiarong.site/"
 		},
 		{
@@ -41,7 +41,7 @@
 		{
 			"name": "超级鹦鹉",
 			"intro": "初级伪人工智能",
-			"icon": "超级鹦鹉.svg",
+			"icon": "superParrot.svg",
 			"url": "#"
 		}
 	],
@@ -54,13 +54,13 @@
 		},
 		{
 			"type": "微信",
-			"icon": "微信.svg",
+			"icon": "wechat.svg",
 			"text": "17137214543",
 			"link": "#"
 		},
 		{
 			"type": "哔哩哔哩",
-			"icon": "哔哩哔哩.svg",
+			"icon": "bilibili.svg",
 			"text": "主核Kernyr",
 			"link": "https://space.bilibili.com/545450739"
 		},

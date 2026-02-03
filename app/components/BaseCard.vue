@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const iconPath = computed(() => { // 计算图标路径
     if (props.icon.startsWith('http')) return props.icon // 如果是完整URL就直接用
-    return `/assets/${props.icon}` // 否则添加/assets/前缀
+    return `/images/${props.icon}` // 否则添加/images/前缀
 })
 
 const iconClass = computed(() => [ // 计算图标类名

@@ -14,9 +14,9 @@ export const siteLanguage = 'zh-CN' // 站点语言
 export const siteLocale = 'zh_CN' // 站点地区
 
 // 资源路径
-export const avatarPath = '/assets/avatar.jpg' // 头像路径
-export const ogImage = '/assets/avatar.jpg' // 社交媒体分享图片
-export const policeIconPath = '/assets/备案图标.png' // 备案图标路径
+export const avatarPath = '/images/avatar.jpg' // 头像路径
+export const ogImage = '/images/avatar.jpg' // 社交媒体分享图片
+export const policeIconPath = '/images/policeIcon.png' // 备案图标路径
 export const dataFilePath = '/data.json' // 数据文件路径
 
 // 备案信息

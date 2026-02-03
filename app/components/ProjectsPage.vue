@@ -24,9 +24,7 @@
 // 用法：<ProjectsPage />
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
-const { projectsData, fetchData } = useSiteData() // 获取项目数据
-
-onMounted(() => fetchData()) // 组件挂载时获取数据
+const { projectsData } = useSiteData() // 获取项目数据（数据已在app.vue中统一加载）
 </script>
 
 <style scoped>

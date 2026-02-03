@@ -25,9 +25,7 @@
 // 用法：<FriendsPage />
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
-const { friendsData, fetchData } = useSiteData() // 获取朋友数据
-
-onMounted(() => fetchData()) // 组件挂载时获取数据
+const { friendsData } = useSiteData() // 获取朋友数据（数据已在app.vue中统一加载）
 </script>
 
 <style scoped>
