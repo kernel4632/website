@@ -13,16 +13,16 @@
 			"link": "https://yangyiit.top"
 		},
 		{
-			"name": "陨落基围虾",
-			"intro": "比较猎奇，难以评价",
-			"avatar": "https://fshrimp.top/avatars/lycaon.jpg",
-			"link": "https://fshrimp.top"
-		},
-		{
 			"name": "skydog221",
 			"intro": "非常棒的编程伙伴",
 			"avatar": "https://m.ccw.site/user_projects_assets/71fda09e6b59355519a8f1d40b40df18.png",
 			"link": "https://mbod.me/"
+		},
+		{
+			"name": "陨落基围虾",
+			"intro": "比较猎奇，难以评价",
+			"avatar": "https://fshrimp.top/avatars/lycaon.jpg",
+			"link": "https://fshrimp.top"
 		}
 	],
 	"projects": [
@@ -39,10 +39,10 @@
 			"url": "https://github.com/kernel4632/DEQ-RWKV"
 		},
 		{
-			"name": "超级鹦鹉",
+			"name": "阿柯AKer",
 			"intro": "初级伪人工智能",
-			"icon": "superParrot.svg",
-			"url": "#"
+			"icon": "AKer.svg",
+			"url": "https://qm.qq.com/q/1Izc4xSWdO"
 		}
 	],
 	"contacts": [
