@@ -141,9 +141,9 @@ const sectionClass = computed(() => [ // 计算区块类名
 .pageSection__divider {
     margin-top: 15px;
     /* 顶部间距 */
-    width: 48px;
+    width: 36px;
     /* 宽度 */
-    height: 5px;
+    height: 6px;
     /* 高度 */
     background-color: var(--theme-color);
     /* 主题色背景 */
