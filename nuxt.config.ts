@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/image", // 图片优化
     "@nuxt/icon", // 图标支持
+    "nuxt-clarity-analytics", // Clarity 统计模块
   ],
 
   // 组件配置 - 禁用路径前缀，使组件可以直接使用文件名
@@ -37,9 +38,9 @@ export default defineNuxtConfig({
   // 自动导入配置 - 导入app根目录下的composables
   imports: {
     dirs: [
-      'composables', // 默认的composables目录
-      '*.ts', // app根目录下的所有ts文件
-    ]
+      "composables", // 默认的composables目录
+      "*.ts", // app根目录下的所有ts文件
+    ],
   },
 
   // 应用配置
@@ -65,21 +66,18 @@ export default defineNuxtConfig({
         // 基础 SEO 标签
         {
           name: "description",
-          content:
-            "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。",
+          content: "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。",
         },
         {
           name: "keywords",
-          content:
-            "Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计, 广州美术学院, 技术博客, 程序员, 炼丹蓝图, DEQ-RWKV, 超级鹦鹉",
+          content: "Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计, 广州美术学院, 技术博客, 程序员, 炼丹蓝图, DEQ-RWKV, 超级鹦鹉",
         },
         { name: "author", content: "主核Kernyr" },
 
         // 搜索引擎指令
         {
           name: "robots",
-          content:
-            "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+          content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
         },
         { name: "googlebot", content: "index, follow" },
         { name: "bingbot", content: "index, follow" },
@@ -106,8 +104,7 @@ export default defineNuxtConfig({
         { property: "og:title", content: "主核Kernyr - 个人主页" },
         {
           property: "og:description",
-          content:
-            "技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。",
+          content: "技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。",
         },
         {
           property: "og:image",
@@ -124,8 +121,7 @@ export default defineNuxtConfig({
         { name: "twitter:title", content: "主核Kernyr - 个人主页" },
         {
           name: "twitter:description",
-          content:
-            "技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。",
+          content: "技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。",
         },
         {
           name: "twitter:image",
@@ -195,16 +191,6 @@ export default defineNuxtConfig({
 
       // 结构化数据 - JSON-LD
       script: [
-        // 百度统计脚本
-        {
-          innerHTML: `var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?1876c19be2c879da708639abf000f877";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();`,
-        },
         {
           type: "application/ld+json",
           innerHTML: JSON.stringify({
@@ -216,8 +202,7 @@ export default defineNuxtConfig({
                 "@id": "https://hujiarong.site/#website",
                 url: "https://hujiarong.site",
                 name: "主核Kernyr",
-                description:
-                  "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人",
+                description: "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人",
                 inLanguage: "zh-CN",
                 publisher: {
                   "@id": "https://hujiarong.site/#person",
@@ -242,19 +227,8 @@ export default defineNuxtConfig({
                   "@type": "EducationalOrganization",
                   name: "广州美术学院",
                 },
-                knowsAbout: [
-                  "前端开发",
-                  "AI算法",
-                  "平面设计",
-                  "游戏机制研究",
-                  "Vue.js",
-                  "Nuxt.js",
-                  "TypeScript",
-                ],
-                sameAs: [
-                  "https://space.bilibili.com/545450739",
-                  "https://github.com/kernel4632",
-                ],
+                knowsAbout: ["前端开发", "AI算法", "平面设计", "游戏机制研究", "Vue.js", "Nuxt.js", "TypeScript"],
+                sameAs: ["https://space.bilibili.com/545450739", "https://github.com/kernel4632"],
               },
               // WebPage 结构化数据
               {
@@ -262,8 +236,7 @@ export default defineNuxtConfig({
                 "@id": "https://hujiarong.site/#webpage",
                 url: "https://hujiarong.site",
                 name: "主核Kernyr - 个人主页",
-                description:
-                  "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。",
+                description: "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。",
                 isPartOf: {
                   "@id": "https://hujiarong.site/#website",
                 },
@@ -303,6 +276,8 @@ export default defineNuxtConfig({
 
   // 运行时配置
   runtimeConfig: {
+    // Clarity 项目 id（供 nuxt-clarity-analytics 模块在服务端注入脚本）
+    clarityId: "vkw8nscpi6",
     public: {
       // 站点基础信息
       siteName: "主核Kernyr",
