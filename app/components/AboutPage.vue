@@ -75,16 +75,16 @@ const { switchPage } = usePageNavigation() // 获取页面切换方法
     /* 移除内边距 */
     list-style: none;
     /* 移除列表样式 */
+    gap: 16px;
+    /* 间距16px */
 }
 
 /* 单个标签 */
 .tag {
     box-shadow: var(--shadow-primary);
     /* 阴影效果 */
-    padding: 8px 15px;
+    padding: 8px 12px;
     /* 内边距 */
-    margin: 8px;
-    /* 外边距 */
     border-radius: var(--border-radius-tag);
     /* 圆角 */
     background-color: var(--white);
@@ -95,8 +95,8 @@ const { switchPage } = usePageNavigation() // 获取页面切换方法
 
 /* 标签悬停效果 */
 .tag:hover {
-    scale: 1.1;
-    /* 放大1.1倍 */
+    scale: 1.05;
+    /* 放大1.05倍 */
 }
 
 /* 介绍内容容器 */

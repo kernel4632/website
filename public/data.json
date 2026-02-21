@@ -53,16 +53,16 @@
 			"link": "https://qm.qq.com/q/7PEdzand7O"
 		},
 		{
-			"type": "哔哩哔哩",
-			"icon": "bilibili.svg",
-			"text": "主核Kernyr",
-			"link": "https://space.bilibili.com/545450739"
-		},
-		{
 			"type": "GitHub",
 			"icon": "GitHub.svg",
 			"text": "kernel4632",
 			"link": "http://github.com/kernel4632"
+		},
+		{
+			"type": "哔哩哔哩",
+			"icon": "bilibili.svg",
+			"text": "主核Kernyr",
+			"link": "https://space.bilibili.com/545450739"
 		}
 	]
 }

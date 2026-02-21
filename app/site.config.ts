@@ -31,7 +31,7 @@ export const pageConfigs: PageConfig[] = [
   { id: 'about', title: '关于我', description: '了解主核Kernyr - 技术探索者、游戏开发追梦人' },
   { id: 'friends', title: '我的朋友', description: '主核Kernyr的朋友们 - 友情链接' },
   { id: 'contact', title: '与我联系', description: '联系主核Kernyr - QQ、微信、哔哩哔哩、GitHub' },
-  { id: 'projects', title: '我的项目', description: '主核Kernyr的项目展示 - 炼丹蓝图、DEQ-RWKV、超级鹦鹉' },
+  { id: 'projects', title: '我的项目', description: '主核Kernyr的项目展示 - 炼丹蓝图、DEQ-RWKV、阿柯AKer' },
 ]
 
 export const defaultPage = 'home' // 默认页面
@@ -43,12 +43,12 @@ export const aboutContent = [ // 个人介绍内容
   '一名技术探索者、游戏开发追梦人🌟',
   '正在广州美术学院度过最美好的大学四年🎓',
   '痴迷技术探索🔍',
-  '从前端开发到 AI 算法',
+  '从全栈开发到 AI 架构理论',
   '从平面设计到游戏机制研究',
-  '都在一点点学习与尝试🧩',
+  '都在一点点学习和尝试🧩',
   '💭白日梦想：',
   '"不自量力"地改变这个世界🔥',
-  '请多指教🙏😊！',
+  '🙏请多指教！',
 ]
 
 // 个人信息（用于结构化数据）

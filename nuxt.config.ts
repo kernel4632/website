@@ -70,7 +70,7 @@ export default defineNuxtConfig({
         },
         {
           name: "keywords",
-          content: "Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计, 广州美术学院, 技术博客, 程序员, 炼丹蓝图, DEQ-RWKV, 超级鹦鹉",
+          content: "Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计, 广州美术学院, 技术博客, 程序员, 炼丹蓝图, DEQ-RWKV, 阿柯AKer",
         },
         { name: "author", content: "主核Kernyr" },
 
