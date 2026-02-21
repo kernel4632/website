@@ -31,8 +31,8 @@ import { icpNumber, icpLink, policeNumber, policeLink, policeIconPath } from '~/
     /* 垂直居中 */
     position: absolute;
     /* 绝对定位 */
-    bottom: 20px;
-    /* 距离底部20px */
+    bottom: 8px;
+    /* 距离底部8px */
     gap: 4px;
 }
 
