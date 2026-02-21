@@ -48,13 +48,13 @@
     /* ==================== 圆角尺寸 ==================== */
 
     /* 按钮圆角 */
-    --border-radius-button: 15px;
+    --border-radius-button: 16px;
 
     /* 卡片圆角 */
-    --border-radius-card: 15px;
+    --border-radius-card: 20px;
 
     /* 标签圆角 */
-    --border-radius-tag: 10px;
+    --border-radius-tag: 12px;
 
     /* 圆形（头像等） */
     --border-radius-circle: 50%;
@@ -99,7 +99,7 @@
     --font-family: sans-serif;
 
     /* 字间距 */
-    --letter-spacing: 1px;
+    --letter-spacing: 2px;
 
     /* ==================== 网格背景 ==================== */
 
