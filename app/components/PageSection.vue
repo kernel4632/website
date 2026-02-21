@@ -139,7 +139,7 @@ const sectionClass = computed(() => [ // 计算区块类名
 
 /* 分隔线 */
 .pageSection__divider {
-    margin-top: 15px;
+    margin-top: 8px;
     /* 顶部间距 */
     width: 36px;
     /* 宽度 */
