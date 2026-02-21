@@ -67,7 +67,7 @@ const { switchPage } = usePageNavigation() // 获取页面切换方法
     /* 阴影效果 */
     will-change: filter;
     /* 优化动画性能 */
-    transition: filter var(--transition-fast);
+    transition: filter var(--transition-fast), scale var(--transition-fast);
     /* 过渡动画 */
 }
 
@@ -75,6 +75,8 @@ const { switchPage } = usePageNavigation() // 获取页面切换方法
 .avatar:hover {
     filter: drop-shadow(var(--shadow-avatar-hover));
     /* 悬停时的阴影 */
+    scale: 1.01;
+    /* 悬停时缩放 */
 }
 
 /* 名称 */

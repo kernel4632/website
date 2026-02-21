@@ -33,12 +33,7 @@ import { icpNumber, icpLink, policeNumber, policeLink, policeIconPath } from '~/
     /* 绝对定位 */
     bottom: 20px;
     /* 距离底部20px */
-    left: 50%;
-    /* 距离左边50% */
-    transform: translateX(-50%);
-    /* 水平居中 */
-    z-index: 1;
-    /* 层级1 */
+    gap: 4px;
 }
 
 /* 备案链接 */
@@ -61,16 +56,20 @@ import { icpNumber, icpLink, policeNumber, policeLink, policeIconPath } from '~/
     /* 垂直居中 */
     justify-content: center;
     /* 水平居中 */
-    gap: 5px;
-    /* 间距5px */
-    transition: color var(--transition-fast);
-    /* 颜色过渡动画 */
+    gap: 8px;
+    /* 间距8px */
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+    /* 颜色和透明度过渡动画 */
+    opacity: 0.5;
+    /* 透明度0.5 */
 }
 
 /* 备案链接悬停效果 */
 .filingInfo a:hover {
     color: rgba(103, 171, 255, 0.8);
     /* 悬停时的颜色 */
+    opacity: 1;
+    /* 悬停时透明度1 */
 }
 
 /* 备案图标 */
