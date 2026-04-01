@@ -20,8 +20,8 @@
             </nav>
         </template>
 
-        <!-- 备案信息 -->
-        <FilingInfo />
+        <!-- 备案信息，备案被销了，先注释掉 -->
+        <!-- <FilingInfo /> -->
     </PageSection>
 </template>
 
