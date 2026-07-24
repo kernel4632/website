@@ -1,32 +1,4 @@
-# robots.txt for 主核Kernyr 个人主页
-
 User-agent: *
 Allow: /
 
-# 如需屏蔽目录，取消下面注释即可
-# Disallow: /private/
-# Disallow: /admin/
-
 Sitemap: https://hujiarong.site/sitemap.xml
-
-# 以下为常见搜索引擎规则（保持标准字段）
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: 360Spider
-Allow: /
-
-User-agent: Sogou web spider
-Allow: /
-
-User-agent: YisouSpider
-Allow: /
-
-User-agent: Bytespider
-Allow: /
