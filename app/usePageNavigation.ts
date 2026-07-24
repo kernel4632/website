@@ -3,25 +3,7 @@
 
 import type { PageName } from '~'
 import { defaultPage } from '~/site.config'
-
-// 页面名称到URL hash的映射
-const pageToHash: Record<PageName, string> = {
-  home: '', // 首页不需要hash
-  about: 'about', // 关于我页面
-  friends: 'friends', // 友情链接页面
-  contact: 'contact', // 联系方式页面
-  projects: 'projects', // 项目页面
-}
-
-// URL hash到页面名称的映射
-const hashToPage: Record<string, PageName> = {
-  '': 'home', // 空hash对应首页
-  home: 'home', // home hash对应首页
-  about: 'about', // about hash对应关于我
-  friends: 'friends', // friends hash对应友情链接
-  contact: 'contact', // contact hash对应联系方式
-  projects: 'projects', // projects hash对应项目
-}
+import { getHashFromPage, getPageFromHash } from '~/pageNavigation'
 
 // 当前页面状态（全局单例）
 const useCurrentPage = () => useState<PageName>('currentPage', () => defaultPage as PageName)
@@ -45,19 +27,6 @@ export function usePageNavigation() {
     if (!import.meta.client) return
     window.removeEventListener('hashchange', handleHashChange)
   })
-
-  // 从URL hash获取页面名称
-  // 用法：const page = getPageFromHash('#about')
-  function getPageFromHash(hash: string): PageName {
-    const cleanHash = hash.replace(/^#/, '').toLowerCase() // 移除#号并转小写
-    return hashToPage[cleanHash] || defaultPage as PageName // 返回对应页面或默认页面
-  }
-
-  // 从页面名称获取URL hash
-  // 用法：const hash = getHashFromPage('about')
-  function getHashFromPage(pageName: PageName): string {
-    return pageToHash[pageName] || '' // 返回对应hash或空字符串
-  }
 
   // 更新URL hash（不刷新页面）
   // 用法：updateUrlHash('about')

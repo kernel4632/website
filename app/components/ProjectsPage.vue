@@ -2,12 +2,14 @@
   <PageSection pageId="projects" title="我的项目">
     <!-- 项目展示区域 -->
     <section class="projectsSection">
-      <!-- 项目卡片列表 -->
-      <ul class="projectsGrid" role="list">
-        <li v-for="(project, index) in projectsData" :key="index" class="projectItem">
-          <BaseCard :title="project.name" :description="project.intro" :icon="project.icon" :link="project.url" type="project" />
-        </li>
-      </ul>
+      <SiteDataState :is-loading="isLoading" :has-loaded="hasLoaded" :error="error" @retry="reloadData">
+        <!-- 项目卡片列表 -->
+        <ul class="projectsGrid" role="list">
+          <li v-for="project in projectsData" :key="project.url" class="projectItem">
+            <BaseCard :title="project.name" :description="project.intro" :icon="project.icon" :link="project.url" type="project" />
+          </li>
+        </ul>
+      </SiteDataState>
     </section>
 
     <!-- 导航按钮 -->
@@ -24,7 +26,7 @@
 // 用法：<ProjectsPage />
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
-const { projectsData } = useSiteData() // 获取项目数据（数据已在app.vue中统一加载）
+const { projectsData, isLoading, hasLoaded, error, reloadData } = useSiteData() // 获取项目数据及加载状态
 </script>
 
 <style scoped>

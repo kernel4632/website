@@ -1,3 +1,21 @@
+import {
+  avatarPath,
+  ogImage,
+  personInfo,
+  siteAuthor,
+  siteCopyright,
+  siteDescription,
+  siteKeywords,
+  siteLanguage,
+  siteLocale,
+  siteMotto,
+  siteName,
+  siteUrl,
+} from "./app/site.config";
+
+const absoluteAvatarUrl = `${siteUrl}${avatarPath}`;
+const absoluteOgImageUrl = `${siteUrl}${ogImage}`;
+
 /**
  * Nuxt 配置文件
  *
@@ -48,7 +66,7 @@ export default defineNuxtConfig({
     // 页面 head 配置 - 全面的 SEO 优化
     head: {
       // 页面标题
-      title: "主核Kernyr - 永远相信自己可以不自量力地改变世界",
+      title: `${siteName} - ${siteMotto}`,
 
       // 字符编码
       charset: "utf-8",
@@ -58,7 +76,7 @@ export default defineNuxtConfig({
 
       // HTML 语言属性
       htmlAttrs: {
-        lang: "zh-CN",
+        lang: siteLanguage,
       },
 
       // Meta 标签 - SEO 核心配置
@@ -66,13 +84,13 @@ export default defineNuxtConfig({
         // 基础 SEO 标签
         {
           name: "description",
-          content: "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。",
+          content: `${siteDescription}${siteMotto}。`,
         },
         {
           name: "keywords",
-          content: "Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计, 广州美术学院, 技术博客, 程序员, 炼丹蓝图, DEQ-RWKV, 阿柯AKer",
+          content: siteKeywords,
         },
-        { name: "author", content: "主核Kernyr" },
+        { name: "author", content: siteAuthor },
 
         // 搜索引擎指令
         {
@@ -94,40 +112,40 @@ export default defineNuxtConfig({
         // 移动端优化
         { name: "format-detection", content: "telephone=no" },
         { name: "apple-mobile-web-app-capable", content: "yes" },
-        { name: "apple-mobile-web-app-title", content: "主核Kernyr" },
+        { name: "apple-mobile-web-app-title", content: siteName },
         { name: "mobile-web-app-capable", content: "yes" },
-        { name: "application-name", content: "主核Kernyr" },
+        { name: "application-name", content: siteName },
 
         // Open Graph 协议 - 社交媒体分享优化
         { property: "og:type", content: "website" },
-        { property: "og:site_name", content: "主核Kernyr" },
-        { property: "og:title", content: "主核Kernyr - 个人主页" },
+        { property: "og:site_name", content: siteName },
+        { property: "og:title", content: `${siteName} - 个人主页` },
         {
           property: "og:description",
-          content: "技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。永远相信自己可以不自量力地改变世界。",
+          content: siteDescription,
         },
         {
           property: "og:image",
-          content: "https://hujiarong.site/images/avatar.jpg",
+          content: absoluteOgImageUrl,
         },
         { property: "og:image:width", content: "512" },
         { property: "og:image:height", content: "512" },
-        { property: "og:image:alt", content: "主核Kernyr的头像" },
-        { property: "og:url", content: "https://hujiarong.site" },
-        { property: "og:locale", content: "zh_CN" },
+        { property: "og:image:alt", content: `${siteName}的头像` },
+        { property: "og:url", content: siteUrl },
+        { property: "og:locale", content: siteLocale },
 
         // Twitter Card - Twitter 分享优化
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "主核Kernyr - 个人主页" },
+        { name: "twitter:title", content: `${siteName} - 个人主页` },
         {
           name: "twitter:description",
-          content: "技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。",
+          content: siteDescription,
         },
         {
           name: "twitter:image",
-          content: "https://hujiarong.site/images/avatar.jpg",
+          content: absoluteOgImageUrl,
         },
-        { name: "twitter:image:alt", content: "主核Kernyr的头像" },
+        { name: "twitter:image:alt", content: `${siteName}的头像` },
 
         // 其他 SEO 相关
         { name: "revisit-after", content: "7 days" },
@@ -137,7 +155,7 @@ export default defineNuxtConfig({
         // 版权信息
         {
           name: "copyright",
-          content: "© 2022-2026 主核Kernyr. All rights reserved.",
+          content: siteCopyright,
         },
       ],
 
@@ -164,7 +182,7 @@ export default defineNuxtConfig({
         },
 
         // Canonical URL - 防止重复内容
-        { rel: "canonical", href: "https://hujiarong.site" },
+        { rel: "canonical", href: siteUrl },
 
         // DNS 预解析 - 提升性能
         { rel: "dns-prefetch", href: "//fonts.googleapis.com" },
@@ -183,7 +201,7 @@ export default defineNuxtConfig({
         },
 
         // 作者信息
-        { rel: "author", href: "https://hujiarong.site" },
+        { rel: "author", href: siteUrl },
 
         // 站点地图
         { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
@@ -199,62 +217,62 @@ export default defineNuxtConfig({
               // WebSite 结构化数据
               {
                 "@type": "WebSite",
-                "@id": "https://hujiarong.site/#website",
-                url: "https://hujiarong.site",
-                name: "主核Kernyr",
-                description: "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人",
-                inLanguage: "zh-CN",
+                "@id": `${siteUrl}/#website`,
+                url: siteUrl,
+                name: siteName,
+                description: siteDescription,
+                inLanguage: siteLanguage,
                 publisher: {
-                  "@id": "https://hujiarong.site/#person",
+                  "@id": `${siteUrl}/#person`,
                 },
               },
               // Person 结构化数据
               {
                 "@type": "Person",
-                "@id": "https://hujiarong.site/#person",
-                name: "主核Kernyr",
-                alternateName: "Kernyr",
-                description: "技术探索者、游戏开发追梦人",
-                url: "https://hujiarong.site",
+                "@id": `${siteUrl}/#person`,
+                name: personInfo.name,
+                alternateName: personInfo.alternateName,
+                description: personInfo.description,
+                url: siteUrl,
                 image: {
                   "@type": "ImageObject",
-                  url: "https://hujiarong.site/images/avatar.jpg",
+                  url: absoluteAvatarUrl,
                   width: 512,
                   height: 512,
                 },
-                jobTitle: "学生 / 开发者",
+                jobTitle: personInfo.jobTitle,
                 affiliation: {
                   "@type": "EducationalOrganization",
-                  name: "广州美术学院",
+                  name: personInfo.affiliation,
                 },
-                knowsAbout: ["前端开发", "AI算法", "平面设计", "游戏机制研究", "Vue.js", "Nuxt.js", "TypeScript"],
-                sameAs: ["https://space.bilibili.com/545450739", "https://github.com/kernel4632"],
+                knowsAbout: personInfo.skills,
+                sameAs: personInfo.sameAs,
               },
               // WebPage 结构化数据
               {
                 "@type": "WebPage",
-                "@id": "https://hujiarong.site/#webpage",
-                url: "https://hujiarong.site",
-                name: "主核Kernyr - 个人主页",
-                description: "主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。",
+                "@id": `${siteUrl}/#webpage`,
+                url: siteUrl,
+                name: `${siteName} - 个人主页`,
+                description: siteDescription,
                 isPartOf: {
-                  "@id": "https://hujiarong.site/#website",
+                  "@id": `${siteUrl}/#website`,
                 },
                 about: {
-                  "@id": "https://hujiarong.site/#person",
+                  "@id": `${siteUrl}/#person`,
                 },
-                inLanguage: "zh-CN",
+                inLanguage: siteLanguage,
               },
               // BreadcrumbList 结构化数据
               {
                 "@type": "BreadcrumbList",
-                "@id": "https://hujiarong.site/#breadcrumb",
+                "@id": `${siteUrl}/#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",
                     position: 1,
                     name: "首页",
-                    item: "https://hujiarong.site",
+                    item: siteUrl,
                   },
                 ],
               },
@@ -280,9 +298,9 @@ export default defineNuxtConfig({
     clarityId: "vkw8nscpi6",
     public: {
       // 站点基础信息
-      siteName: "主核Kernyr",
-      siteDescription: "永远相信自己可以不自量力地改变世界",
-      siteUrl: "https://hujiarong.site",
+      siteName,
+      siteDescription,
+      siteUrl,
     },
   },
 

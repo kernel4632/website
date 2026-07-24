@@ -2,16 +2,18 @@
     <PageSection pageId="contact" title="与我联系">
         <!-- 联系方式区域 -->
         <address class="contactsSection">
-            <!-- 联系方式列表 -->
-            <ul class="contactsList" role="list">
-                <li v-for="(contact, index) in contactsData" :key="index" class="contactItem" @click="handleContactClick(contact)" role="button" tabindex="0" @keydown.enter="handleContactClick(contact)" @keydown.space.prevent="handleContactClick(contact)">
-                    <!-- 联系方式图标 -->
-                    <img :src="`/images/${contact.icon}`" :alt="`${contact.type}图标`" class="contactIcon" width="40" height="40" loading="lazy" />
+            <SiteDataState :is-loading="isLoading" :has-loaded="hasLoaded" :error="error" @retry="reloadData">
+                <!-- 联系方式列表 -->
+                <ul class="contactsList" role="list">
+                    <li v-for="contact in contactsData" :key="contact.type" class="contactItem" @click="handleContactClick(contact)" role="button" tabindex="0" @keydown.enter="handleContactClick(contact)" @keydown.space.prevent="handleContactClick(contact)">
+                        <!-- 联系方式图标 -->
+                        <img :src="`/images/${contact.icon}`" :alt="`${contact.type}图标`" class="contactIcon" width="40" height="40" loading="lazy" />
 
-                    <!-- 联系方式文本 -->
-                    <span class="contactText">{{ contact.text }}</span>
-                </li>
-            </ul>
+                        <!-- 联系方式文本 -->
+                        <span class="contactText">{{ contact.text }}</span>
+                    </li>
+                </ul>
+            </SiteDataState>
         </address>
 
         <!-- 导航按钮 -->
@@ -33,7 +35,7 @@ import type { ContactData } from '~'
 import { openLinkOrCopy } from '~/clipboard'
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
-const { contactsData } = useSiteData() // 获取联系方式数据（数据已在app.vue中统一加载）
+const { contactsData, isLoading, hasLoaded, error, reloadData } = useSiteData() // 获取联系方式数据及加载状态
 const toastMessage = ref('')
 const isToastVisible = ref(false)
 let toastTimer: ReturnType<typeof setTimeout> | undefined

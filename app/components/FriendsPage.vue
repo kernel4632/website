@@ -2,12 +2,14 @@
     <PageSection pageId="friends" title="我的朋友">
         <!-- 朋友列表区域 -->
         <section class="friendsSection">
-            <!-- 朋友卡片列表 -->
-            <ul class="friendsGrid" role="list">
-                <li v-for="(friend, index) in friendsData" :key="index" class="friendItem">
-                    <BaseCard :title="friend.name" :description="friend.intro" :icon="friend.avatar" :link="friend.link" type="friend" />
-                </li>
-            </ul>
+            <SiteDataState :is-loading="isLoading" :has-loaded="hasLoaded" :error="error" @retry="reloadData">
+                <!-- 朋友卡片列表 -->
+                <ul class="friendsGrid" role="list">
+                    <li v-for="friend in friendsData" :key="friend.link" class="friendItem">
+                        <BaseCard :title="friend.name" :description="friend.intro" :icon="friend.avatar" :link="friend.link" type="friend" />
+                    </li>
+                </ul>
+            </SiteDataState>
         </section>
 
         <!-- 导航按钮 -->
@@ -25,7 +27,7 @@
 // 用法：<FriendsPage />
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
-const { friendsData } = useSiteData() // 获取朋友数据（数据已在app.vue中统一加载）
+const { friendsData, isLoading, hasLoaded, error, reloadData } = useSiteData() // 获取朋友数据及加载状态
 </script>
 
 <style scoped>

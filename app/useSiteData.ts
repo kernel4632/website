@@ -3,6 +3,7 @@
 
 import type { FriendData, ProjectData, ContactData, SiteData } from '~'
 import { dataFilePath } from '~/site.config'
+import { parseSiteData } from '~/siteData.validation'
 
 // 全局状态（使用useState确保SSR兼容）
 const useFriendsData = () => useState<FriendData[]>('friendsData', () => []) // 朋友数据
@@ -10,6 +11,7 @@ const useProjectsData = () => useState<ProjectData[]>('projectsData', () => []) 
 const useContactsData = () => useState<ContactData[]>('contactsData', () => []) // 联系方式数据
 const useIsLoading = () => useState<boolean>('siteDataLoading', () => false) // 加载状态
 const useError = () => useState<Error | null>('siteDataError', () => null) // 错误状态
+const useHasLoaded = () => useState<boolean>('siteDataHasLoaded', () => false) // 是否已完成加载
 
 // 站点数据composable
 export function useSiteData() {
@@ -18,11 +20,12 @@ export function useSiteData() {
   const contactsData = useContactsData() // 获取联系方式数据状态
   const isLoading = useIsLoading() // 获取加载状态
   const error = useError() // 获取错误状态
+  const hasLoaded = useHasLoaded() // 获取加载完成状态
 
   // 获取站点数据
   // 用法：await fetchData()
   async function fetchData(): Promise<void> {
-    if (friendsData.value.length > 0) return // 如果已有数据就不重复加载
+    if (hasLoaded.value || isLoading.value) return // 已加载或正在加载时不重复请求
 
     isLoading.value = true // 设置加载中
     error.value = null // 清空错误
@@ -31,11 +34,13 @@ export function useSiteData() {
       const response = await fetch(dataFilePath) // 请求数据文件
       if (!response.ok) throw new Error(`HTTP错误: ${response.status}`) // 检查响应状态
 
-      const data: SiteData = await response.json() // 解析JSON数据
+      const rawData: unknown = await response.json() // 解析未知的JSON数据
+      const data: SiteData = parseSiteData(rawData) // 校验数据结构
 
       friendsData.value = data.friends || [] // 更新朋友数据
       projectsData.value = data.projects || [] // 更新项目数据
       contactsData.value = data.contacts || [] // 更新联系方式数据
+      hasLoaded.value = true // 标记数据加载成功
     } catch (err) {
       error.value = err instanceof Error ? err : new Error('获取数据失败') // 设置错误信息
       console.error('获取站点数据失败:', error.value) // 输出错误日志
@@ -50,6 +55,7 @@ export function useSiteData() {
     friendsData.value = [] // 清空朋友数据
     projectsData.value = [] // 清空项目数据
     contactsData.value = [] // 清空联系方式数据
+    hasLoaded.value = false // 重置加载状态
     await fetchData() // 重新获取数据
   }
 
@@ -59,9 +65,9 @@ export function useSiteData() {
     contactsData: readonly(contactsData), // 联系方式数据（只读）
     isLoading: readonly(isLoading), // 加载状态（只读）
     error: readonly(error), // 错误状态（只读）
+    hasLoaded: readonly(hasLoaded), // 加载完成状态（只读）
     fetchData, // 获取数据方法
     reloadData, // 重新加载数据方法
   }
 }
-
 

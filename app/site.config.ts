@@ -1,17 +1,18 @@
 // 站点配置 - 集中管理所有可定制的站点信息
 // 用法：import { siteName, siteUrl } from '~/site.config'
 
-import type { PageConfig } from '~'
+import type { PageConfig } from './index'
 
 // 站点基本信息
 export const siteName = '主核Kernyr' // 站点名称
 export const siteMotto = '永远相信自己可以不自量力地改变世界' // 座右铭
 export const siteDescription = '主核Kernyr的个人主页 - 技术探索者、游戏开发追梦人。专注于前端开发、AI算法、平面设计和游戏机制研究。' // 站点描述
-export const siteKeywords = 'Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计' // 关键词
+export const siteKeywords = 'Kernyr, 主核, 个人主页, 前端开发, AI算法, 游戏开发, 平面设计, 广州美术学院, 技术博客, 程序员, 炼丹蓝图, DEQ-RWKV, 阿柯AKer' // 关键词
 export const siteAuthor = '主核Kernyr' // 作者
 export const siteUrl = 'https://hujiarong.site' // 站点URL
 export const siteLanguage = 'zh-CN' // 站点语言
 export const siteLocale = 'zh_CN' // 站点地区
+export const siteCopyright = '© 2022-2026 主核Kernyr. All rights reserved.' // 版权信息
 
 // 资源路径
 export const avatarPath = '/images/avatar.jpg' // 头像路径

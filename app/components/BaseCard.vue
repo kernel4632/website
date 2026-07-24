@@ -1,5 +1,5 @@
 <template>
-    <article class="baseCard" :class="{ 'baseCard--clickable': hasValidLink }" @click="handleClick" @keydown.enter="handleClick" @keydown.space.prevent="handleClick" :tabindex="hasValidLink ? 0 : -1" :role="hasValidLink ? 'link' : undefined">
+    <component :is="cardTag" class="baseCard" :class="{ 'baseCard--clickable': hasValidLink }" :href="hasValidLink ? link : undefined" :target="hasValidLink ? '_blank' : undefined" :rel="hasValidLink ? 'noopener noreferrer' : undefined">
         <!-- 图标 -->
         <img :src="iconPath" :alt="`${title}的${type === 'friend' ? '头像' : '图标'}`" :class="iconClass" width="80" height="80" loading="lazy" />
 
@@ -9,11 +9,7 @@
         <!-- 描述 -->
         <p class="baseCard__description">{{ description }}</p>
 
-        <!-- 隐藏的链接（用于SEO） -->
-        <a v-if="hasValidLink" :href="link" target="_blank" rel="noopener noreferrer" class="baseCard__link" @click.stop>
-            <span class="visuallyHidden">访问{{ title }}</span>
-        </a>
-    </article>
+    </component>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +17,7 @@
 // 用法：<BaseCard title="标题" description="描述" icon="图标路径" link="链接" type="friend" />
 
 import type { CardType } from '~'
+import { computed } from 'vue'
 
 interface Props {
     title: string // 卡片标题
@@ -46,13 +43,10 @@ const iconClass = computed(() => [ // 计算图标类名
 ])
 
 const hasValidLink = computed(() => { // 检查是否有有效链接
-    return props.link && props.link !== '#' // 链接存在且不是#
+    return props.link.trim() !== '' && props.link !== '#' // 链接存在且不是#
 })
 
-function handleClick(): void { // 处理卡片点击
-    if (!hasValidLink.value) return // 如果没有有效链接就不处理
-    window.open(props.link, '_blank', 'noopener,noreferrer') // 在新窗口打开链接
-}
+const cardTag = computed(() => hasValidLink.value ? 'a' : 'article')
 </script>
 
 <style scoped>
@@ -184,37 +178,4 @@ function handleClick(): void { // 处理卡片点击
     /* 文本居中 */
 }
 
-/* 隐藏链接 */
-.baseCard__link {
-    position: absolute;
-    /* 绝对定位 */
-    inset: 0;
-    /* 填满整个卡片 */
-    z-index: 1;
-    /* 层级1 */
-    opacity: 0;
-    /* 透明 */
-}
-
-/* 视觉隐藏（仅屏幕阅读器可见） */
-.visuallyHidden {
-    position: absolute;
-    /* 绝对定位 */
-    width: 1px;
-    /* 宽度1px */
-    height: 1px;
-    /* 高度1px */
-    padding: 0;
-    /* 无内边距 */
-    margin: -1px;
-    /* 负外边距 */
-    overflow: hidden;
-    /* 隐藏溢出 */
-    clip: rect(0, 0, 0, 0);
-    /* 裁剪 */
-    white-space: nowrap;
-    /* 不换行 */
-    border: 0;
-    /* 无边框 */
-}
 </style>
