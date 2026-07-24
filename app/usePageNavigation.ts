@@ -30,6 +30,22 @@ const useCurrentPage = () => useState<PageName>('currentPage', () => defaultPage
 export function usePageNavigation() {
   const currentPage = useCurrentPage() // 获取当前页面状态
 
+  function handleHashChange(): void {
+    const hash = window.location.hash // 获取新的hash
+    const page = getPageFromHash(hash) // 从hash获取页面名称
+
+    if (page === currentPage.value) return // 如果已经是当前页面就不处理
+
+    currentPage.value = page // 更新当前页面
+    window.scrollTo(0, 0) // 滚动到页面顶部
+    if (import.meta.dev) console.log(`浏览器导航到: ${page}`) // 开发环境输出日志
+  }
+
+  onUnmounted(() => {
+    if (!import.meta.client) return
+    window.removeEventListener('hashchange', handleHashChange)
+  })
+
   // 从URL hash获取页面名称
   // 用法：const page = getPageFromHash('#about')
   function getPageFromHash(hash: string): PageName {
@@ -73,16 +89,7 @@ export function usePageNavigation() {
   function setupHashChangeListener(): void {
     if (!import.meta.client) return // 只在客户端执行
 
-    window.addEventListener('hashchange', () => { // 监听hash变化
-      const hash = window.location.hash // 获取新的hash
-      const page = getPageFromHash(hash) // 从hash获取页面名称
-
-      if (page === currentPage.value) return // 如果已经是当前页面就不处理
-
-      currentPage.value = page // 更新当前页面
-      window.scrollTo(0, 0) // 滚动到页面顶部
-      if (import.meta.dev) console.log(`浏览器导航到: ${page}`) // 开发环境输出日志
-    })
+    window.addEventListener('hashchange', handleHashChange) // 监听hash变化
   }
 
   // 切换到指定页面

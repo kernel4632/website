@@ -20,6 +20,8 @@
                 <BaseButton variant="secondary" @click="switchPage('friends')">返回</BaseButton>
             </nav>
         </template>
+
+        <BaseToast :message="toastMessage" :visible="isToastVisible" />
     </PageSection>
 </template>
 
@@ -32,11 +34,27 @@ import { openLinkOrCopy } from '~/clipboard'
 
 const { switchPage } = usePageNavigation() // 获取页面切换方法
 const { contactsData } = useSiteData() // 获取联系方式数据（数据已在app.vue中统一加载）
+const toastMessage = ref('')
+const isToastVisible = ref(false)
+let toastTimer: ReturnType<typeof setTimeout> | undefined
+
+function showToast(message: string): void {
+    toastMessage.value = message
+    isToastVisible.value = true
+    clearTimeout(toastTimer)
+    toastTimer = setTimeout(() => {
+        isToastVisible.value = false
+    }, 2000)
+}
+
+onUnmounted(() => clearTimeout(toastTimer))
 
 // 处理联系方式点击 - 有链接就打开，没链接就复制
 // 用法：handleContactClick(contact)
 async function handleContactClick(contact: ContactData): Promise<void> {
-    await openLinkOrCopy(contact.link, contact.text) // 打开链接或复制文本
+    const copyResult = await openLinkOrCopy(contact.link, contact.text) // 打开链接或复制文本
+    if (copyResult === null) return
+    showToast(copyResult ? '已复制到剪贴板' : '复制失败，请手动复制')
 }
 </script>
 

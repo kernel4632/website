@@ -31,13 +31,11 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 
 // 打开链接或复制文本
 // 用法：await openLinkOrCopy('https://example.com', '示例文本')
-export async function openLinkOrCopy(link: string, text: string): Promise<void> {
+export async function openLinkOrCopy(link: string, text: string): Promise<boolean | null> {
   if (link && link !== '#') { // 如果有有效链接
-    window.open(link, '_blank') // 在新窗口打开链接
-    return // 结束函数
+    window.open(link, '_blank', 'noopener,noreferrer') // 在新窗口打开链接
+    return null // 链接已打开，不需要复制提示
   }
 
-  const success = await copyToClipboard(text) // 复制文本到剪贴板
-  const message = success ? '已复制到剪贴板' : '复制失败，请手动复制' // 构建提示消息
-  alert(message) // 显示提示
+  return copyToClipboard(text) // 返回复制结果，由调用方展示反馈
 }
